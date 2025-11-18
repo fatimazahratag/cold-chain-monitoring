@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Graphique Température</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <link rel="stylesheet" href="{% static 'DHT/graph_temp.css' %}">
+<style>body {
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+    margin: 0;
+    padding: 20px;
+}
+
+.graph-container {
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+.graph-container h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.canvas-wrapper {
+    width: 100%;
+    height: 260px; /* Graph petit */
+    position: relative;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+</style>
+</head>
+<body>
+<div style="text-align: center; margin-bottom: 20px;">
+    <button onclick="location.href='{% url 'dashboard' %}'"
+            style="
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            ">
+        Retour au Dashboard
+    </button>
+</div>
+
+<div class="graph-container">
+    <h2>Température — Historique</h2>
+
+    <div class="canvas-wrapper">
+        <canvas id="tempChart"></canvas>
+    </div>
+</div>
+
+<script src="{% static 'DHT/graph_temp.js' %}"></script>
+</body>
+</html>
