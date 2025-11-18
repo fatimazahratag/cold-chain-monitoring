@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DHT11 Dashboard</title>
+    <link rel="stylesheet" href="{% static 'DHT/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #1e1e2f;
+            color: white;
+            padding-top: 30px;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .sidebar a {
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            background: #3f3f5e;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 30px;
+            width: calc(100% - 250px);
+            min-height: 100vh;
+            background: #f0f2f5;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2 style="text-align:center">DHT11</h2>
+    <a href="{% url 'dashboard' %}">🏠 Dashboard</a>
+    <a href="{% url 'temperature' %}">🌡️ Température</a>
+    <a href="{% url 'humidity' %}">💧 Humidité</a>
+    <a href="{% url 'analytics' %}">📊 Statistiques (Dates)</a>
+</div>
+
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>
