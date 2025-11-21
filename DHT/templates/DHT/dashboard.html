@@ -172,7 +172,14 @@
  <div class="alert-buttons">
         <button id="sendEmailBtn" onclick="location.href='{% url 'send_email_alert' %}'">📧 Envoyer Email</button>
         <button id="sendTelegramBtn" onclick="location.href='{% url 'send_telegram_alert' %}'">📨 Envoyer Telegram</button>
-      </div>
+     <audio id="alertSound" src="{% static 'DHT/sounds/alert.mp3' %}" preload="auto" loop></audio>
+<button id="stopAlertBtn" style="display:none; padding:10px 20px; background:#f44336; color:white; border:none; border-radius:5px; cursor:pointer;">
+    🔕 Arrêter l'alerte
+</button>
+<button id="sendWhatsappBtn">Envoyer WhatsApp</button>
+
+ </div>
+
     </div>
 
   </div>
@@ -206,7 +213,75 @@
 
   setInterval(loadLatest, 5000);
   loadLatest();
+  if(data.temperature > SEUIL_TEMPERATURE) {  // Remplace SEUIL_TEMPERATURE par la valeur
+    const audio = document.getElementById('alertSound');
+    audio.play();  // Joue le son
+}
+
 </script>
+<script src="{% static 'DHT/alert_sound.js' %}"></script>
+
+<script>const SEUIL_TEMPERATURE = 20;
+const audio = document.getElementById('alertSound');
+const stopBtn = document.getElementById('stopAlertBtn');
+let alertActive = false;
+let userStopped = false; // <-- nouveau flag
+
+async function checkAlert() {
+    try {
+        const response = await fetch("/latest/");
+        const data = await response.json();
+
+        if (data.temperature > SEUIL_TEMPERATURE) {
+            if (!alertActive && !userStopped) { // ne joue que si pas stoppé par user
+                audio.play();
+                alertActive = true;
+                stopBtn.style.display = 'inline-block';
+            }
+        } else {
+            if (alertActive) {
+                audio.pause();
+                audio.currentTime = 0;
+                alertActive = false;
+                stopBtn.style.display = 'none';
+                userStopped = false; // reset si température redescend
+            }
+        }
+
+    } catch (error) {
+        console.error("Erreur checkAlert:", error);
+    }
+}
+
+setInterval(checkAlert, 5000);
+checkAlert();
+
+stopBtn.addEventListener('click', () => {
+    audio.pause();
+    audio.currentTime = 0;
+    alertActive = false;
+    userStopped = true; // bloque le son même si température > seuil
+    stopBtn.style.display = 'none';
+});
+
+document.getElementById("sendWhatsappBtn").addEventListener("click", async () => {
+    try {
+        const response = await fetch("/send-whatsapp-alert/");
+        const data = await response.json();
+
+        if(data.status === "sent") {
+            alert("WhatsApp envoyé !");
+        } else {
+            alert("Erreur WhatsApp: " + data.error);
+        }
+    } catch(e) {
+        alert("Erreur serveur !");
+    }
+});
+
+
+</script>
+
 
 </body>
 </html>

@@ -3,6 +3,9 @@ from django.conf import settings
 import requests
 from datetime import datetime
 
+from django.test import Client
+
+
 def send_telegram(text: str) -> bool:
     token = settings.TELEGRAM_BOT_TOKEN
     chat_id = settings.TELEGRAM_CHAT_ID
@@ -35,3 +38,18 @@ def send_alert_view(temp: float, hum: float, timestamp=None):
     recipient_email = "rahimasaoudi65@gmail.com"  # email spécifique
     send_email("Alerte DHT11", message, recipient_list=[recipient_email])
     send_telegram(message)
+
+
+
+def send_whatsapp(message: str) -> bool:
+    try:
+        client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+        client.messages.create(
+            from_=settings.TWILIO_WHATSAPP_NUMBER,
+            body=message,
+            to=settings.MY_WHATSAPP_NUMBER
+        )
+        return True
+    except Exception as e:
+        print("Erreur WhatsApp:", e)
+        return False

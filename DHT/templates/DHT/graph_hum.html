@@ -56,8 +56,12 @@
             ">
         Retour au Dashboard
     </button>
-</div>
 
+    <!-- Bouton download Humidité -->
+    <button id="downloadHumBtn" style="margin-top: 20px; padding: 10px 15px; border:none; border-radius:8px; background-color:#4CAF50; color:white; cursor:pointer;">
+       Télécharger les données
+    </button>
+</div>
 <div class="graph-container">
     <h2>Humidité — Historique</h2>
 
@@ -67,5 +71,44 @@
 </div>
 
 <script src="{% static 'DHT/graph_hum.js' %}"></script>
+<script>
+document.getElementById('downloadHumBtn').addEventListener('click', async () => {
+  try {
+    const response = await fetch('/api/history/');
+    const data = await response.json();
+
+    const mesures = data.history; // accéder à la clé correcte
+
+    if (!Array.isArray(mesures) || mesures.length === 0) {
+      alert("Aucune donnée à télécharger !");
+      return;
+    }
+
+    // Ajouter BOM UTF-8 pour Excel
+    let csvContent = "data:text/csv;charset=utf-8,\ufeff";
+    csvContent += "Timestamp,Température,Humidité\n";
+
+    mesures.forEach(item => {
+      const ts = item.dt || "N/A";
+      const temp = item.temp || "N/A";
+      const hum = item.hum || "N/A";
+      csvContent += `${ts},${temp},${hum}\n`;
+    });
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "mesures_humidité.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+  } catch (err) {
+    console.error("Erreur téléchargement :", err);
+    alert("Erreur lors du téléchargement. Vérifie la console.");
+  }
+});
+</script>
+
 </body>
 </html>
