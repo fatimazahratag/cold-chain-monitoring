@@ -137,3 +137,7 @@ EMAIL_HOST_PASSWORD = 'gvgb sfyt gtks bgch'
 
 TELEGRAM_BOT_TOKEN = "8538031795:AAGPedXC6RA3k10hHt0PUh5edap9VM1Zats"
 TELEGRAM_CHAT_ID = "1151333491"  # your personal chat_id
+TWILIO_ACCOUNT_SID = "your_twilio_sid"
+TWILIO_AUTH_TOKEN = "your_twilio_token"
+TWILIO_WHATSAPP_NUMBER = "your_twilio_whatsapp"
+MY_WHATSAPP_NUMBER = "your_number"

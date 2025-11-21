@@ -12,7 +12,11 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 
 from .models import Dht11
-
+TWILIO_ACCOUNT_SID = "your_twilio_sid"
+TWILIO_AUTH_TOKEN = "your_twilio_token"
+TWILIO_WHATSAPP_NUMBER = "your_twilio_whatsapp"
+MY_WHATSAPP_NUMBER = "your_number"
+from twilio.rest import Client
 # Dashboard
 def dashboard(request):
     return render(request, "DHT/dashboard.html")
