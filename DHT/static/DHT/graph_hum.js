@@ -1,7 +1,7 @@
 let humChart;
 
 async function drawHum() {
-    const res = await fetch("/history/?t=" + Date.now());
+    const res = await fetch("/api/history/?t=" + Date.now());
     const data = await res.json();
     let raw = data.history;
 

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Dashboard Opérateur</h1>
+<ul>
+    {% for ticket in tickets %}
+    <li>#{{ ticket.id }} — {{ ticket.get_incident_type_display }} — {{ ticket.status }}</li>
+    {% empty %}
+    <li>Aucun ticket assigné</li>
+    {% endfor %}
+</ul>
+{% endblock %}

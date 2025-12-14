@@ -1,0 +1,52 @@
+<style>
+.incident-table {
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0 10px;
+}
+.incident-table td {
+    padding:10px 14px;
+}
+.status-badge {
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:700;
+}
+.status-open { background:#fee2e2;color:#991b1b;}
+.status-progress { background:#fef9c3;color:#854d0e;}
+.status-closed { background:#dcfce7;color:#166534;}
+</style>
+
+<table class="incident-table">
+<tr><td><b>ID</b></td><td>#{{ ticket.id }}</td></tr>
+<tr><td><b>Type</b></td><td>{{ ticket.get_incident_type_display }}</td></tr>
+<tr><td><b>Capteur</b></td><td>{{ ticket.sensor.name|default:"N/A" }}</td></tr>
+<tr><td><b>Température</b></td><td>{{ ticket.temp }}°C</td></tr>
+<tr><td><b>Humidité</b></td><td>{{ ticket.hum }}%</td></tr>
+<tr>
+  <td><b>Status</b></td>
+  <td>
+    {% if ticket.status == "open" %}
+      <span class="status-badge status-open">Ouvert</span>
+    {% elif ticket.status == "in_progress" %}
+      <span class="status-badge status-progress">En cours</span>
+    {% else %}
+      <span class="status-badge status-closed">Clos</span>
+    {% endif %}
+  </td>
+</tr>
+</table>
+
+<div class="mt-3 text-end">
+    <button class="btn btn-primary btn-sm assign-btn"
+            data-id="{{ ticket.id }}">
+        Assigner
+    </button>
+
+    <button class="btn btn-danger btn-sm close-btn"
+            data-id="{{ ticket.id }}">
+        Clôturer
+    </button>
+</div>
+</div>

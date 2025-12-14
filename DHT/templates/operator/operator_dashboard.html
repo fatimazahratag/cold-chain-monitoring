@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Portail Opérateur</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body { background: #f8fafc; }
+.card { border-radius: 14px; }
+.badge-open { background: #dc3545; }
+.badge-in_progress { background: #ffc107; color: black; }
+.badge-closed { background: #198754; }
+
+.dashboard-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.btn-dashboard {
+    background: linear-gradient(135deg, #acb2bf, #acb2bf);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    min-width: 230px;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.btn-dashboard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(176, 176, 176, 0.35);
+}
+
+.btn-dashboard:active {
+    transform: scale(0.98);
+}
+
+</style>
+</head>
+<body>
+<div class="container py-5">
+<h2 class="text-center mb-4">❄️ Portail Opérateur</h2>
+<div class="dashboard-actions">
+    <button id="homeBtn" class="btn-dashboard">
+        🏠 Retour à l’accueil
+    </button>
+</div>
+<!-- FORM NOM -->
+<form method="get" class="d-flex justify-content-center gap-2 mb-4">
+    <input class="form-control w-25" type="text" name="name"
+           placeholder="Votre nom" value="{{ operator_name }}" required>
+    <button class="btn btn-success">Accéder</button>
+</form>
+
+{% if tickets %}
+<div class="card shadow">
+<div class="card-body">
+<table class="table table-bordered align-middle">
+<thead class="table-light">
+<tr>
+    <th>ID</th>
+    <th>Frigo / Capteur</th>
+    <th>Incident</th>
+    <th>Temp (°C)</th>
+    <th>Hum (%)</th>
+    <th>Status</th>
+    <th>Commentaires</th>
+    <th>Répondre / Mettre à jour</th>
+</tr>
+</thead>
+<tbody>
+{% for t in tickets %}
+<tr>
+    <td>{{ t.id }}</td>
+    <td>{{ t.sensor.name }}<br><small>{{ t.sensor.location }}</small></td>
+    <td>{{ t.get_incident_type_display }}</td>
+    <td>{{ t.temp|default:"—" }}</td>
+    <td>{{ t.hum|default:"—" }}</td>
+    <td>
+        <span class="badge badge-{{ t.status }}">{{ t.get_status_display }}</span>
+        {% if t.status != 'closed' %}
+        <form method="post" class="mt-1">
+            {% csrf_token %}
+            <input type="hidden" name="ticket_id" value="{{ t.id }}">
+            <select name="status" class="form-select form-select-sm mb-1">
+                <option value="open" {% if t.status == 'open' %}selected{% endif %}>Ouvert</option>
+                <option value="in_progress" {% if t.status == 'in_progress' %}selected{% endif %}>En cours</option>
+                <option value="closed" {% if t.status == 'closed' %}selected{% endif %}>Clos</option>
+            </select>
+            <button class="btn btn-warning btn-sm w-100">Changer le statut</button>
+        </form>
+        {% endif %}
+    </td>
+    <td>
+        {% if t.comments.all %}
+            {% for c in t.comments.all %}
+                <div><strong>{{ c.user_name }}</strong> : {{ c.content }}</div>
+            {% endfor %}
+        {% else %}
+            <span class="text-muted">Aucun commentaire</span>
+        {% endif %}
+    </td>
+    <td>
+        {% if t.status != 'closed' %}
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="ticket_id" value="{{ t.id }}">
+            <input class="form-control mb-1" name="content" placeholder="Votre commentaire">
+            <button class="btn btn-primary btn-sm w-100">Ajouter commentaire</button>
+        </form>
+        {% else %}
+            <span class="text-muted">Ticket clos</span>
+        {% endif %}
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+{% else %}
+<p class="text-center text-muted">
+Entrez votre nom pour voir vos incidents.
+</p>
+{% endif %}
+</div>
+<script>
+    document.getElementById("homeBtn").addEventListener("click", () => {
+        window.location.href = "{% url 'home' %}";
+    });
+</script>
+
+</body>
+</html>

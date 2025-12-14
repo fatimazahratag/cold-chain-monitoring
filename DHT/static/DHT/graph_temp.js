@@ -1,36 +1,46 @@
-let chart;
+let tempChartInstance;
 
 async function drawTemp() {
-    const res = await fetch("/history/?t=" + Date.now());
+    const res = await fetch("/api/history/?t=" + Date.now());
     const data = await res.json();
-    let raw = data.history;
+    const raw = data.history;
 
-    if (!raw || raw.length === 0) return;
+    if (!raw || raw.length === 0) {
+        console.log("No temperature data");
+        return;
+    }
 
     raw.sort((a, b) => new Date(a.dt) - new Date(b.dt));
 
     const labels = raw.map(item =>
-        new Date(item.dt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+        new Date(item.dt).toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit"
+        })
     );
+
     const temps = raw.map(item => item.temp);
 
     const canvas = document.getElementById("tempChart");
+    if (!canvas) {
+        console.error("Canvas tempChart not found");
+        return;
+    }
+
     const ctx = canvas.getContext("2d");
 
-    // FULL CANVAS CLEAR
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (tempChartInstance) {
+        tempChartInstance.destroy();
+    }
 
-    if (chart) chart.destroy();
-
-    // Gradient
     const gradient = ctx.createLinearGradient(0, 0, 0, 260);
     gradient.addColorStop(0, "rgba(255,0,0,0.5)");
     gradient.addColorStop(1, "rgba(255,0,0,0)");
 
-    chart = new Chart(ctx, {
+    tempChartInstance = new Chart(ctx, {
         type: "line",
         data: {
-            labels,
+            labels: labels,
             datasets: [{
                 label: "Température (°C)",
                 data: temps,

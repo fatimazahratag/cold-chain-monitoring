@@ -1,0 +1,101 @@
+{% extends "DHT/base.html" %}
+{% block title %}Éditer Opérateur — Cold Chain{% endblock %}
+
+{% block content %}
+<style>
+.edit-operator-card {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    font-family: 'Inter', sans-serif;
+}
+
+.edit-operator-card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #111827;
+    font-weight: 700;
+}
+
+.edit-operator-card label {
+    display: block;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+    margin-top: 15px;
+}
+
+.edit-operator-card input {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.edit-operator-card button {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 12px 35px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background: #2563eb;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+}
+
+.edit-operator-card button:hover {
+    background: #1d4ed8;
+}
+
+.messages {
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.messages .success {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.messages .error {
+    color: #dc2626;
+    font-weight: 600;
+}
+</style>
+
+<div class="messages">
+    {% for message in messages %}
+        <div class="{% if message.tags %}{{ message.tags }}{% endif %}">
+            {{ message }}
+        </div>
+    {% endfor %}
+</div>
+
+<div class="edit-operator-card">
+    <h2>Éditer Opérateur</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Nom d'utilisateur</label>
+        <input type="text" name="username" value="{{ operator.username }}" required>
+
+        <label>Email</label>
+        <input type="email" name="email" value="{{ operator.email }}">
+
+        <label>Mot de passe (laisser vide pour ne pas changer)</label>
+        <input type="password" name="password">
+
+        <button type="submit">Mettre à jour</button>
+    </form>
+</div>
+{% endblock %}

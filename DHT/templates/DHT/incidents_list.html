@@ -1,0 +1,335 @@
+{% extends "DHT/base.html" %}
+{% load static %}
+
+{% block title %}Incidents — Cold Chain{% endblock %}
+
+{% block content %}
+<style>/* INCIDENTS CARD */
+.incidents-card {
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+}
+
+/* TABLE */
+.incidents-table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+/* HEADER */
+.incidents-table thead th {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #64748b;
+    border-bottom: none;
+}
+
+/* ROW */
+.incidents-table tbody tr {
+    background: white;
+    border-radius: 14px;
+    transition: all 0.25s ease;
+}
+
+.incidents-table tbody tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
+
+/* CELLS */
+.incidents-table td {
+    padding: 14px 16px;
+    vertical-align: middle;
+}
+
+/* TYPE */
+.incident-type {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* DATE */
+.incident-date {
+    font-size: 14px;
+    color: #475569;
+}
+
+/* STATUS BADGES */
+.status-badge {
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.status-open {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-progress {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.status-closed {
+    background: #dcfce7;
+    color: #166534;
+}
+
+/* VIEW BUTTON */
+.btn-view {
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    border: none;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.btn-view:hover {
+    background: linear-gradient(135deg, #1e40af, #1e3a8a);
+    transform: translateY(-2px);
+    color: white;
+}
+
+/* EMPTY */
+.empty-row {
+    text-align: center;
+    padding: 20px;
+    color: #64748b;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .incidents-table thead {
+        display: none;
+    }
+
+    .incidents-table tbody tr {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .incidents-table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 14px;
+    }
+
+    .incidents-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #64748b;
+    }
+}
+</style>
+<h2 class="page-title">🚨 Liste des Incidents</h2>
+
+<div class="card incidents-card">
+    <div class="table-responsive">
+        <table class="table incidents-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>Capteur</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Assigné à</th>  
+                    <th>Action</th>
+
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for i in incidents %}
+<tr data-id="{{ i.id }}">
+                    <td class="fw-bold">#{{ i.id }}</td>
+
+                    <td>
+                        <span class="incident-type">
+                            {{ i.get_incident_type_display }}
+                        </span>
+                    </td>
+
+                    <td>
+                        {{ i.sensor.name|default:"N/A" }}
+                    </td>
+
+                    <td class="incident-date">
+                        {{ i.created_at|date:"d/m/Y H:i" }}
+                    </td>
+
+                   <td class="status-cell">
+    {% if i.status == "open" %}
+        <span class="status-badge status-open">Ouvert</span>
+    {% elif i.status == "in_progress" %}
+        <span class="status-badge status-progress">En cours</span>
+    {% else %}
+        <span class="status-badge status-closed">Clos</span>
+    {% endif %}
+</td>
+<td>
+    {% if i.assigned_to %}
+        {{ i.assigned_to.username }}
+    {% else %}
+        N/A
+    {% endif %}
+</td>
+
+                    <td>
+                       <button 
+    class="btn btn-view open-incident"
+    data-url="{% url 'incident_detail_modal' i.id %}">
+    👁 Voir
+</button>
+
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="empty-row">
+                        Aucun incident détecté
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- MODAL -->
+<!-- Modal -->
+<div class="modal fade" id="incidentModal" tabindex="-1">
+  <div class="modal-dialog modal-md modal-dialog-centered">
+    <div class="modal-content" style="border-radius:16px; max-width:550px; margin:auto;">
+      
+      <div class="modal-header">
+        <h5 class="modal-title">🚨 Détail Incident</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body" id="incidentModalBody">
+        <div class="text-center py-5">
+          ⏳ Chargement...
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll(".open-incident").forEach(btn => {
+  btn.addEventListener("click", function () {
+    const url = this.dataset.url;
+    const modal = new bootstrap.Modal(document.getElementById("incidentModal"));
+
+    document.getElementById("incidentModalBody").innerHTML =
+      "<div class='text-center py-5'>⏳ Chargement...</div>";
+
+    fetch(url)
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("incidentModalBody").innerHTML = html;
+        modal.show();
+      });
+  });
+});
+</script>
+
+<script>
+document.addEventListener("click", function (e) {
+
+    if (e.target.classList.contains("assign-btn")) {
+        const id = e.target.dataset.id;
+        assignTicket(id);
+    }
+
+    if (e.target.classList.contains("close-btn")) {
+        const id = e.target.dataset.id;
+        closeTicket(id);
+    }
+
+});
+
+function assignTicket(id) {
+    console.log("Assign ticket", id);
+    // AJAX assign هنا
+}
+
+function closeTicket(id) {
+    console.log("Close ticket", id);
+    // AJAX close هنا
+}
+</script>
+
+<script>
+document.querySelectorAll(".open-incident").forEach(btn => {
+    btn.addEventListener("click", function () {
+        const url = this.dataset.url;
+        const modal = new bootstrap.Modal(document.getElementById("incidentModal"));
+
+        document.getElementById("incidentModalBody").innerHTML =
+            "<div class='text-center py-5'>⏳ Chargement...</div>";
+
+        fetch(url)
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("incidentModalBody").innerHTML = html;
+                modal.show();
+            });
+    });
+});
+</script>
+<script>
+function assignTicket(id) {
+    fetch(`/ticket/${id}/assign-ajax/`)
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === "ok") {
+                updateRowStatus(id, "in_progress");
+                bootstrap.Modal.getInstance(
+                    document.getElementById("incidentModal")
+                ).hide();
+            }
+        });
+}
+
+function closeTicket(id) {
+    fetch(`/ticket/${id}/close-ajax/`)
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === "ok") {
+                updateRowStatus(id, "closed");
+                bootstrap.Modal.getInstance(
+                    document.getElementById("incidentModal")
+                ).hide();
+            }
+        });
+}
+
+function updateRowStatus(id, status) {
+    const row = document.querySelector(`tr[data-id='${id}']`);
+    if (!row) return;
+
+    const statusCell = row.querySelector(".status-cell");
+
+    if (status === "in_progress") {
+        statusCell.innerHTML =
+          `<span class="status-badge status-progress">En cours</span>`;
+    } else {
+        statusCell.innerHTML =
+          `<span class="status-badge status-closed">Clos</span>`;
+    }
+}
+</script>
+
+{% endblock %}

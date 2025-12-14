@@ -1,0 +1,14 @@
+{% for alert in alerts %}
+<div class="alert alert-danger">
+    {{ alert.message }}
+
+    {% if not alert.is_read %}
+    <form method="POST" action="{% url 'mark_alert_read' alert.id %}">
+        {% csrf_token %}
+        <button class="btn btn-success btn-sm">J’ai lu</button>
+    </form>
+    {% else %}
+    <span class="badge bg-success">Lue</span>
+    {% endif %}
+</div>
+{% endfor %}

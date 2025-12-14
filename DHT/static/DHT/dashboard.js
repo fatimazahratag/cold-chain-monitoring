@@ -1,16 +1,26 @@
 async function loadLatest() {
-    const res = await fetch("/latest/");
-    const data = await res.json();
+    try {
+        const response = await fetch("/api/latest/");
+        const data = await response.json();
 
-    document.getElementById("tempValue").textContent = data.temp + " °C";
-    document.getElementById("humValue").textContent = data.hum + " %";
+        document.getElementById("lastTemp").textContent = data.temp + " °C";
+        document.getElementById("lastHum").textContent = data.hum + " %";
 
-    const dt = new Date(data.dt);
-    const diff = Math.floor((Date.now() - dt.getTime()) / 1000);
+        const lastUpdate = new Date(data.dt);
+        const now = new Date();
+        const diffSec = Math.floor((now - lastUpdate) / 1000);
 
-    document.getElementById("tempAgo").textContent = "Il y a " + diff + " sec";
-    document.getElementById("humAgo").textContent = "Il y a " + diff + " sec";
+        const hh = lastUpdate.getHours().toString().padStart(2, '0');
+        const mm = lastUpdate.getMinutes().toString().padStart(2, '0');
+
+        const timeString = `${hh}:${mm}`;
+
+        document.getElementById("temp_time").textContent = `il y a : ${diffSec} sec (${timeString})`;
+        document.getElementById("hum_time").textContent = `il y a : ${diffSec} sec (${timeString})`;
+
+    } catch (error) {
+        console.error("Erreur loadLatest :", error);
+    }
 }
-
-loadLatest();
 setInterval(loadLatest, 5000);
+loadLatest();

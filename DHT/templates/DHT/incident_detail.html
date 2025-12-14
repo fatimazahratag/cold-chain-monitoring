@@ -1,0 +1,275 @@
+{% load static %}
+
+{% block title %}Incident #{{ ticket.id }}{% endblock %}
+
+{% block extrahead %}
+<style>
+
+/* ======================================================
+   RESET TOTAL — يعزل الصفحة على base.css
+====================================================== */
+.incident-page,
+.incident-page * {
+    all: revert;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ======================================================
+   LAYOUT
+====================================================== */
+.incident-page {
+    min-height: 85vh;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: #f1f5f9;
+}
+
+/* ======================================================
+   CARD
+====================================================== */
+.incident-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 18px;
+    padding: 26px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.incident-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 45px rgba(0,0,0,.12);
+}
+
+.incident-title {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: #dc2626;
+}
+
+/* ======================================================
+   TABLE
+====================================================== */
+.incident-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+}
+
+.incident-table thead th {
+    font-size: .75rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #64748b;
+    padding: 10px 16px;
+    text-align: left;
+}
+
+.incident-table tbody tr {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.06);
+    transition: all .25s ease;
+}
+
+.incident-table tbody tr:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0,0,0,.12);
+}
+
+.incident-table td {
+    padding: 14px 16px;
+    font-size: .95rem;
+    color: #0f172a;
+}
+
+/* ======================================================
+   STATUS BADGES
+====================================================== */
+.status-badge {
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 999px;
+    display: inline-block;
+}
+
+.status-open {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-progress {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.status-closed {
+    background: #dcfce7;
+    color: #166534;
+}
+
+/* ======================================================
+   BUTTONS
+====================================================== */
+.actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-view {
+    padding: 7px 18px;
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(135deg,#2563eb,#1d4ed8);
+    transition: all .25s ease;
+}
+
+.btn-view:hover {
+    background: linear-gradient(135deg,#1e40af,#1e3a8a);
+    transform: translateY(-2px);
+}
+
+/* ======================================================
+   ALERTS
+====================================================== */
+.incident-alert {
+    margin-top: 20px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: .9rem;
+    text-align: center;
+}
+
+.alert-info {
+    background: #e0f2fe;
+    color: #075985;
+}
+
+.alert-warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.alert-success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+@media (max-width: 768px) {
+
+    .incident-table thead {
+        display: none;
+    }
+
+    .incident-table tbody tr {
+        display: block;
+        padding: 12px;
+    }
+
+    .incident-table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+    }
+
+    .incident-table td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #64748b;
+    }
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="incident-page">
+
+    <div class="incident-card">
+
+        <h2 class="incident-title">
+            🚨 Détail Incident #{{ ticket.id }}
+        </h2>
+
+        <table class="incident-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>Capteur</th>
+                    <th>Température</th>
+                    <th>Humidité</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="ID">#{{ ticket.id }}</td>
+                    <td data-label="Type">{{ ticket.get_incident_type_display }}</td>
+                    <td data-label="Capteur">{{ ticket.sensor.name|default:"N/A" }}</td>
+                    <td data-label="Température">{{ ticket.temp }}°C</td>
+                    <td data-label="Humidité">{{ ticket.hum }}%</td>
+                    <td data-label="Status">
+                        {% if ticket.status == "Open" %}
+                            <span class="status-badge status-open">Ouvert</span>
+                        {% elif ticket.status == "In Progress" %}
+                            <span class="status-badge status-progress">En cours</span>
+                        {% elif ticket.status == "Closed" %}
+                            <span class="status-badge status-closed">Clôturé</span>
+                        {% else %}
+                            <span class="status-badge">{{ ticket.status }}</span>
+                        {% endif %}
+                    </td>
+                    <td data-label="Actions">
+                        <div class="actions">
+                            <a href="{% url 'assign_ticket' ticket.id %}" class="btn-view">Assigner</a>
+                            <a href="{% url 'close_ticket' ticket.id %}" class="btn-view">Clôturer</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        {% if user.is_authenticated %}
+            <div class="incident-alert alert-info">
+                👀 Vous êtes connecté et autorisé à voir ce ticket.
+            </div>
+        {% else %}
+            <div class="incident-alert alert-warning">
+                ⚠ Vous devez être connecté pour accéder aux détails.
+            </div>
+        {% endif %}
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="incident-alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "DHT/base.html" %}
+{% block title %}Incidents{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4 text-center">📡 Centre de Surveillance – Cold Chain</h2>
+
+    <div class="row">
+
+        <!-- INCIDENT -->
+        <div class="col-md-6">
+            <div class="card shadow p-3 mb-4">
+                <h4 class="mb-3">🚨 Incident récent</h4>
+
+                {% if last_incident %}
+                    <p><strong>Type :</strong> {{ last_incident.get_incident_type_display }}</p>
+                    <p><strong>Temp :</strong> {{ last_incident.temp }} °C</p>
+                    <p><strong>Hum :</strong> {{ last_incident.hum }} %</p>
+                    <p><strong>Date :</strong> {{ last_incident.created_at|date:"d/m/Y H:i" }}</p>
+                    <!-- <a href="/incidents/{{ last_incident.id }}/" class="btn btn-danger">Voir</a> -->
+                {% else %}
+                    <p class="text-success">✔ Aucun incident détecté</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- TEMP NORMALE -->
+        <div class="col-md-6">
+            <div class="card shadow p-3 mb-4">
+                <h4 class="mb-3">🌡 Température normale</h4>
+
+{% if temp_min is not None %}
+    <p>Normal : <strong>{{ temp_min }}°C ≤ Temp ≤ {{ temp_max }}°C</strong></p>
+{% else %}
+    <p class="text-warning">⚠ Seuils non définis</p>
+{% endif %}
+
+                {% if last %}
+                    <p><strong>Température actuelle :</strong> {{ last.temp }}°C</p>
+                    <p><strong>Humidité actuelle :</strong> {{ last.hum }}%</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPTEUR -->
+    <div class="card shadow p-3 mb-4">
+        <h4 class="mb-3">📊 Compteurs d’alertes</h4>
+        <p><strong>Total incidents :</strong> {{ total_incidents }}</p>
+
+        <!-- ✔ button li bghiti -->
+<a href="{% url 'incidents_list' %}" class="btn btn-primary btn-lg shadow-sm">
+    🚨 Voir la liste des incidents
+</a>
+
+
+    </div>
+
+    <!-- COMMENTAIRES -->
+    <div class="card shadow p-3 mb-4">
+        <form method="POST">
+    {% csrf_token %}
+    <h3 class="commentaire">Commentaires </h3>
+</form>
+
+{% for c in comments %}
+<div class="alert alert-info mt-2">
+    <strong>{{ c.user.username }}</strong> :
+    {{ c.content }} <br>
+    <small>{{ c.created_at|date:"d/m/Y H:i" }}</small>
+</div>
+{% empty %}
+<p class="text-muted mt-3">Aucun commentaire.</p>
+{% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

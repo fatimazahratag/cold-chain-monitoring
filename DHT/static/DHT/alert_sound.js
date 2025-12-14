@@ -16,7 +16,7 @@ stopBtn.addEventListener('click', () => {
 // Fonction qui vérifie les valeurs et joue le son si nécessaire
 async function checkAlerts() {
   try {
-    const response = await fetch("/latest/");
+    const response = await fetch("/api/latest/");
     const data = await response.json();
 
     // Définir les seuils critiques

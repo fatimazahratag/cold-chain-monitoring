@@ -1,0 +1,127 @@
+{% extends "DHT/base.html" %}
+{% block title %}Audit Log{% endblock %}
+
+{% block content %}
+
+<style>
+/* AUDIT CARD */
+.audit-card {
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    background: #f8fafc;
+}
+
+/* AUDIT LIST */
+.audit-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* AUDIT ITEM */
+.audit-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    transition: all 0.25s ease;
+}
+
+.audit-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+/* LEFT */
+.audit-time {
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 6px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+/* RIGHT */
+.audit-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* USER */
+.audit-user {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0369a1;
+    background: #e0f2fe;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+/* ACTION */
+.audit-action {
+    font-size: 14px;
+    color: #0f172a;
+    font-weight: 500;
+}
+
+/* EMPTY */
+.audit-empty {
+    text-align: center;
+    padding: 20px;
+    color: #64748b;
+    font-size: 15px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .audit-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+</style>
+
+<h2 class="fw-bold mb-4">📜 Journal d'Audit</h2>
+
+<div class="audit-card">
+
+    <ul class="audit-list">
+        {% for a in logs %}
+            <li class="audit-item">
+
+                <!-- TIME -->
+                <span class="audit-time">
+                    {{ a.timestamp|date:"d/m/Y H:i" }}
+                </span>
+
+                <!-- RIGHT SIDE -->
+                <div class="audit-right">
+                    <span class="audit-user">
+                        {{ a.user.username|default:"??" }}
+                    </span>
+
+                    <span class="audit-action">
+                        {{ a.action }}
+                    </span>
+                </div>
+
+            </li>
+        {% empty %}
+            <li class="audit-empty">
+                Aucun log disponible
+            </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock %}

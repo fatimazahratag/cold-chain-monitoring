@@ -1,0 +1,119 @@
+{% extends "DHT/base.html" %}
+{% block title %}Liste des Opérateurs{% endblock %}
+
+{% block content %}
+<style>
+.operator-list-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    font-family: 'Inter', sans-serif;
+}
+
+.operator-list-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #111827;
+    font-weight: 700;
+}
+
+.operator-list-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.operator-list-table th, .operator-list-table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.operator-list-table thead {
+    background: #2563eb;
+    color: white;
+    font-weight: 600;
+    border-radius: 12px 12px 0 0;
+}
+
+.operator-list-table tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background 0.2s ease;
+}
+
+.operator-list-table tbody tr:hover {
+    background: #f3f4f6;
+}
+
+.operator-list-table td {
+    color: #374151;
+}
+
+.operator-list-empty {
+    text-align: center;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.action-btn {
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    transition: all 0.25s ease;
+}
+
+.edit-btn {
+    background: #10b981; /* vert */
+}
+
+.edit-btn:hover {
+    background: #059669;
+}
+
+.delete-btn {
+    background: #ef4444; /* rouge */
+}
+
+.delete-btn:hover {
+    background: #b91c1c;
+}
+</style>
+
+<div class="operator-list-container">
+    <h2>Liste des opérateurs</h2>
+    <table class="operator-list-table">
+        <thead>
+            <tr>
+                <th>Nom d'utilisateur</th>
+                <th>Email</th>
+                <th>Staff</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for op in operators %}
+            <tr>
+                <td>{{ op.username }}</td>
+                <td>{{ op.email }}</td>
+                <td>{% if op.is_staff %}✅{% else %}❌{% endif %}</td>
+                <td>
+    <a href="{% url 'edit_operator' op.id %}" class="btn btn-sm btn-primary">Éditer</a>
+</td>
+
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="operator-list-empty">Aucun opérateur trouvé</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>403 — Accès refusé</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #020617, #0f172a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e5e7eb;
+        }
+
+        .error-card {
+            background: #020617;
+            padding: 50px 45px;
+            border-radius: 18px;
+            text-align: center;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .error-code {
+            font-size: 72px;
+            font-weight: 800;
+            color: #ef4444;
+            margin-bottom: 10px;
+        }
+
+        .error-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .error-text {
+            font-size: 15px;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .btn-home {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #38bdf8, #2563eb);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(56,189,248,0.4);
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="error-card">
+        <div class="error-code">403</div>
+        <div class="error-title">Accès refusé</div>
+        <p class="error-text">
+            Vous n’avez pas l’autorisation d’accéder à cette page.<br>
+            Merci de contacter l’administrateur si vous pensez qu’il s’agit d’une erreur.
+        </p>
+        <a href="/" class="btn-home">⬅ Retour à l’accueil</a>
+    </div>
+
+</body>
+</html>

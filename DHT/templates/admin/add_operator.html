@@ -1,0 +1,144 @@
+{% extends "DHT/base.html" %}
+{% load static %}
+
+{% block title %}Ajouter un Opérateur — Cold Chain{% endblock %}
+
+{% block content %}
+<style>
+/* Conteneur spécifique pour éviter conflit CSS global */
+.add-operator-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0%;
+    background: #f9fafb;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Card avec style unique */
+.add-operator-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    padding: 0px 20px;
+    max-width: 500px;
+    width: 100%;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.add-operator-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.add-operator-card h2 {
+    text-align: center;
+    color: #111827;
+    font-weight: 700;
+}
+
+.add-operator-card label {
+    font-weight: 600;
+    color: #374151;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.add-operator-card input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    transition: border-color 0.25s ease;
+}
+
+.add-operator-card input:focus {
+    border-color: #2563eb;
+    outline: none;
+}
+
+.add-operator-card button {
+    padding: 12px 20px;       /* padding vertical + horizontal */
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background: #2563eb;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: block;            /* nécessaire pour margin auto */
+    margin: 20px auto 0 auto;  /* centre horizontalement avec marge top de 20px */
+    text-align: center;        /* centre le texte à l'intérieur */
+}
+
+.add-operator-card button:hover {
+    background: #1d4ed8;
+}
+
+
+/* Messages */
+.add-operator-messages {
+    max-width: 500px;
+    margin: 15px auto;
+    text-align: center;
+}
+
+.add-operator-messages .success {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.add-operator-messages .error {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+/* Lien liste opérateurs */
+.add-operator-list-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.add-operator-list-link:hover {
+    text-decoration: underline;
+}
+</style>
+
+<div class="add-operator-page">
+
+    <a href="{% url 'list_operators' %}" class="add-operator-list-link">
+        👥 Voir la liste des opérateurs
+    </a>
+
+    <div class="add-operator-messages">
+        {% for message in messages %}
+            <div class="{% if message.tags %}{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="add-operator-card">
+        <h2>Ajouter un Opérateur</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username" name="username" placeholder="Entrer le username" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Entrer l'email">
+
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" placeholder="Entrer le mot de passe" required>
+
+            <button type="submit">Ajouter l'Opérateur</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

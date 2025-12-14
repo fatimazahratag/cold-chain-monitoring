@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Portail Cold Chain</title>
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f172a, #020617);
+            font-family: "Inter", sans-serif;
+            color: white;
+        }
+
+        .portal-card {
+            background: #020617;
+            border-radius: 18px;
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 460px;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+        }
+
+        .portal-card h1 {
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #38bdf8;
+        }
+
+        .portal-card p {
+            color: #94a3b8;
+            margin-bottom: 40px;
+        }
+
+        .role-btn {
+            width: 100%;
+            height: 60px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 14px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .role-btn.admin {
+            background: linear-gradient(135deg, #2563eb, #38bdf8);
+            border: none;
+            color: white;
+        }
+
+        .role-btn.operator {
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            border: none;
+            color: white;
+        }
+
+        .role-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(56,189,248,0.35);
+        }
+        /* Dashboard */
+        .role-btn.dashboard {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            border: none;
+            color: white;
+        }
+
+        .role-btn.dashboard:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(251,191,36,0.35);
+        }
+
+        .role-btn.dashboard.active {
+            box-shadow: 0 0 0 3px #facc15;
+            transform: translateY(-1px);
+        }
+        .footer-text {
+            margin-top: 30px;
+            font-size: 13px;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="portal-card">
+    <h1>❄️ Cold Chain</h1>
+    <p>Plateforme intelligente de surveillance thermique</p>
+    <!-- <h3>  Voir le Dashboard :    <a href="{% url 'dashboard' %}" style="text-decoration: none;" class="{% if request.path == '/dashboard/' %}active{% endif %}"> Dashboard</a></h3> -->
+
+    <a href="{% url 'admin_custom_dashboard' %}" class="btn role-btn admin">
+        🛠️ Accès Administrateur
+    </a>
+
+<a href="{% url 'open_operator_dashboard' %}" class="btn role-btn operator">
+    👷 Accès Opérateur
+</a>
+ <a href="{% url 'dashboard' %}" class="btn role-btn dashboard {% if request.path == '/dashboard/' %}active{% endif %}">
+        📊 Voir le Dashboard
+    </a>
+
+    <div class="footer-text">
+        © {{ year|default:"2025" }} Cold Chain Monitoring
+    </div>
+</div>
+
+</body>
+</html>
