@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚨 Alerte Température - ColdChain</title>
+    <style>
+        /* Variables CSS pour éviter les erreurs de validation */
+        :root {
+            --alert-color-high: #dc3545;
+            --alert-color-low: #007bff;
+            --border-color-high: #ffeaa7;
+            --border-color-low: #bee5eb;
+            --bg-color-high: #fff3cd;
+            --bg-color-low: #d1ecf1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: var(--alert-color-high); /* Modifié dynamiquement via JS */
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header-high {
+            background: var(--alert-color-high);
+        }
+        
+        .header-low {
+            background: var(--alert-color-low);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        .header h2 {
+            margin: 10px 0 0 0;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .alert-box {
+            background: var(--bg-color-high); /* Modifié dynamiquement */
+            border: 2px solid var(--border-color-high); /* Modifié dynamiquement */
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .alert-box-high {
+            background: var(--bg-color-high);
+            border-color: var(--border-color-high);
+        }
+        
+        .alert-box-low {
+            background: var(--bg-color-low);
+            border-color: var(--border-color-low);
+        }
+        
+        .data-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .data-card h3 {
+            color: #495057;
+            margin-top: 0;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+        }
+        
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .data-label {
+            font-weight: 600;
+            color: #6c757d;
+        }
+        
+        .data-value {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: var(--alert-color-high); /* Modifié dynamiquement */
+        }
+        
+        .data-value-high {
+            color: var(--alert-color-high);
+        }
+        
+        .data-value-low {
+            color: var(--alert-color-low);
+        }
+        
+        .action-box {
+            background: #d4edda;
+            border: 2px solid #c3e6cb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .action-box h3 {
+            color: #155724;
+            margin-top: 0;
+        }
+        
+        .action-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .action-box li {
+            margin-bottom: 8px;
+        }
+        
+        .button {
+            display: inline-block;
+            background: var(--alert-color-high); /* Modifié dynamiquement */
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        .button-high {
+            background: var(--alert-color-high);
+        }
+        
+        .button-low {
+            background: var(--alert-color-low);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+            color: #6c757d;
+            font-size: 12px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background: var(--alert-color-high); /* Modifié dynamiquement */
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .badge-high {
+            background: var(--alert-color-high);
+        }
+        
+        .badge-low {
+            background: var(--alert-color-low);
+        }
+        
+        .alert-title {
+            text-align: center;
+            color: #856404; /* Couleur par défaut pour haute température */
+        }
+        
+        .alert-title-high {
+            color: #856404;
+        }
+        
+        .alert-title-low {
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- La classe header-high ou header-low sera ajoutée via Django -->
+        <div class="header {% if is_high %}header-high{% else %}header-low{% endif %}">
+            <h1>🚨 ALERTE TEMPÉRATURE {{ alert_type }}</h1>
+            <h2>Système de Monitoring ColdChain</h2>
+        </div>
+        
+        <div class="content">
+            <div class="alert-box {% if is_high %}alert-box-high{% else %}alert-box-low{% endif %}">
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <span class="badge {% if is_high %}badge-high{% else %}badge-low{% endif %}">URGENT</span>
+                </div>
+                <h3 class="alert-title {% if is_high %}alert-title-high{% else %}alert-title-low{% endif %}">
+                    ⚠️ ATTENTION : DÉPASSEMENT DE SEUIL
+                </h3>
+                <p style="text-align: center; font-weight: 500;">
+                    Le système a détecté une température {% if is_high %}trop élevée{% else %}trop basse{% endif %}.
+                </p>
+            </div>
+            
+            <div class="data-card">
+                <h3>📊 DONNÉES ACTUELLES</h3>
+                <div class="data-row">
+                    <span class="data-label">Température:</span>
+                    <span class="data-value {% if is_high %}data-value-high{% else %}data-value-low{% endif %}">{{ temperature }}°C</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Humidité:</span>
+                    <span>{{ humidity }}%</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Date/Heure:</span>
+                    <span>{{ timestamp|date:"d/m/Y H:i:s" }}</span>
+                </div>
+            </div>
+            
+            <div class="data-card">
+                <h3>📈 SEUILS DE CONTRÔLE</h3>
+                <div class="data-row">
+                    <span class="data-label">Seuil {% if is_high %}maximum{% else %}minimum{% endif %}:</span>
+                    <span class="data-value {% if is_high %}data-value-high{% else %}data-value-low{% endif %}">{{ threshold }}°C</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Écart:</span>
+                    <span>{{ ecart }}°C {% if is_high %}au-dessus{% else %}en-dessous{% endif %}</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Plage normale:</span>
+                    <span>{{ low_threshold }}°C - {{ high_threshold }}°C</span>
+                </div>
+            </div>
+            
+            <div class="action-box">
+                <h3>🚑 ACTIONS REQUISES IMMÉDIATEMENT</h3>
+                <ul>
+                    <li>Vérifier l'équipement de refroidissement</li>
+                    <li>Contrôler l'intégrité de la chaîne du froid</li>
+                    <li>Documenter l'incident dans le système</li>
+                    <li>Prendre les mesures correctives nécessaires</li>
+                    <li>Contacter le responsable qualité si nécessaire</li>
+                </ul>
+                <div style="text-align: center;">
+                    <a href="{{ dashboard_url }}" class="button {% if is_high %}button-high{% else %}button-low{% endif %}">
+                        📋 ACCÉDER AU DASHBOARD
+                    </a>
+                </div>
+            </div>
+            
+            <div style="background: #e2e3e5; padding: 15px; border-radius: 5px; font-size: 13px;">
+                <p style="margin: 0;">
+                    <strong>📌 Référence :</strong> Alerte générée automatiquement par le capteur ID: {{ sensor_id }}
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📧 Cet email est envoyé automatiquement par le système de monitoring ColdChain</p>
+            <p>© {{ year }} ColdChain System - Tous droits réservés</p>
+            <p style="font-size: 11px; color: #868e96;">
+                Si vous pensez avoir reçu cet email par erreur, merci de contacter l'administrateur.
+            </p>
+        </div>
+    </div>
+
+    <!-- Petit script pour gérer les classes dynamiques -->
+    <script>
+        // Ce script n'est pas nécessaire mais peut être utile pour certaines versions d'email clients
+        document.addEventListener('DOMContentLoaded', function() {
+            // Les classes sont déjà gérées par Django, ce script est juste en backup
+            console.log('Email template chargé');
+        });
+    </script>
+</body>
+</html>

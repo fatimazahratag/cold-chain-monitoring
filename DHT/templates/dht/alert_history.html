@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Historique des Incidents</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --success-color: #06d6a0;
+            --danger-color: #ef476f;
+            --warning-color: #ffd166;
+            --info-color: #118ab2;
+            --sidebar-bg: #2d3748;
+            --sidebar-hover: #4a5568;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ===== SIDEBAR FIXÉ ===== */
+        .sidebar {
+            width: 280px;
+            min-height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(180deg, var(--sidebar-bg), #1a202c);
+            color: white;
+            box-shadow: 3px 0 15px rgba(0,0,0,.15);
+            z-index: 1000;
+        }
+
+        .sidebar-brand {
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,.15);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar-brand h4 {
+            color: white;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+
+        .sidebar-brand small {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .sidebar-menu {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+
+        .sidebar-section {
+            padding: 0 15px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            color: #a0aec0;
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            padding-left: 10px;
+            font-weight: 600;
+        }
+
+        .sidebar-link {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            border-radius: 8px;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-link:hover {
+            background: var(--sidebar-hover);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .sidebar-link.active {
+            background: linear-gradient(90deg, rgba(67, 97, 238, 0.25) 0%, rgba(67, 97, 238, 0.1) 100%);
+            color: white;
+            font-weight: 600;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .sidebar-link i {
+            width: 24px;
+            font-size: 1.1rem;
+            margin-right: 12px;
+        }
+
+        /* ===== FOOTER FIX ===== */
+        .sidebar-footer {
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,.1);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            margin-left: 280px;
+            padding: 30px;
+            min-height: 100vh;
+        }
+
+        .dashboard-header {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            border: none;
+            transition: transform 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            background: white;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-radius: 15px 15px 0 0 !important;
+            padding: 1.2rem 1.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* ========== STYLES DES INCIDENTS ========== */
+        .incident-item {
+            border-left: 4px solid;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .incident-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+
+        .incident-open { border-left-color: var(--danger-color); background-color: rgba(239, 71, 111, 0.05); }
+        .incident-closed { border-left-color: var(--success-color); background-color: rgba(6, 214, 160, 0.05); }
+
+        .incident-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .incident-id {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .incident-status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-open { background: var(--danger-color); color: white; }
+        .status-closed { background: var(--success-color); color: white; }
+
+        .incident-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: #343a40;
+        }
+
+        .incident-comment {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            border-left: 3px solid var(--info-color);
+        }
+
+        .comment-label {
+            font-weight: 600;
+            color: var(--info-color);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .comment-label i {
+            margin-right: 8px;
+        }
+
+        .comment-content {
+            color: #495057;
+            line-height: 1.5;
+        }
+
+        .btn-csv {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-csv:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(40, 167, 69, 0.3);
+            color: white;
+        }
+
+        .btn-logout {
+            background: linear-gradient(135deg, #ef476f, #e63946);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-logout:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(239, 71, 111, 0.3);
+            color: white;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .username-badge {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(67, 97, 238, 0.2);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            color: #dee2e6;
+            margin-bottom: 20px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 992px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                min-height: auto;
+                margin-bottom: 20px;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .sidebar-footer {
+                position: relative;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header {
+                padding: 1rem;
+            }
+            
+            .user-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .incident-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .incident-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <h4><i class="fas fa-snowflake me-2"></i> ColdChain Admin</h4>
+        <small>Administration système</small>
+    </div>
+
+    <div class="sidebar-menu">
+        <div class="sidebar-section">
+            <div class="section-title">Dashboard</div>
+            <a href="{% url 'admin_dashboard' %}" class="sidebar-link">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Tableau de bord</span>
+            </a>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-title">Surveillance</div>
+            <a href="{% url 'operator_dashboard' %}" class="sidebar-link">
+                <i class="fas fa-eye"></i>
+                <span>Vue opérateur</span>
+            </a>
+            <a href="{% url 'home' %}" class="sidebar-link">
+                <i class="fas fa-globe"></i>
+                <span>Page publique</span>
+            </a>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-title">Logs & Historique</div>
+            <a href="{% url 'system_logs' %}" class="sidebar-link">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Logs système</span>
+            </a>
+            <a href="{% url 'alert_history' %}" class="sidebar-link active">
+                <i class="fas fa-history"></i>
+                <span>Historique incidents</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="sidebar-footer">
+        <div class="mb-3 text-center">
+            <small class="text-muted d-block mb-2">
+                Connecté en tant que:<br>
+                <strong>{{ user.username }}</strong>
+            </small>
+            <small class="text-muted">
+                <i class="far fa-clock me-1"></i>
+                {% now "d/m/Y H:i" %}
+            </small>
+        </div>
+    </div>
+</div>
+
+<!-- Contenu principal -->
+<div class="main-content">
+    <!-- En-tête -->
+    <div class="dashboard-header">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+            <div class="mb-3 mb-md-0">
+                <h3 class="mb-1"><i class="fas fa-history me-2"></i> Historique des Incidents</h3>
+                <p class="text-muted mb-0">Liste complète des incidents avec gestion</p>
+            </div>
+            <div class="user-info">
+                <span class="username-badge">
+                    <i class="fas fa-user-shield me-1"></i>{{ user.username }}
+                </span>
+                <a href="{% url 'export_incidents_csv' %}" class="btn-csv">
+                    <i class="fas fa-file-csv me-2"></i> Télécharger CSV
+                </a>
+                <a href="{% url 'home' %}" class="btn-logout">
+                    <i class="fas fa-sign-out-alt me-2"></i> Déconnexion
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Informations générales -->
+    <div class="alert alert-info mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <i class="fas fa-info-circle me-2"></i>
+                <strong>{{ incidents.paginator.count }}</strong> incidents au total
+            </div>
+            <div>
+                <small class="text-muted">
+                    {% if incidents %}
+                        Page {{ incidents.number }} sur {{ incidents.paginator.num_pages }}
+                    {% endif %}
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Liste des incidents -->
+    <div class="card">
+        <div class="card-body">
+            {% if incidents %}
+                {% for incident in incidents %}
+                <div class="incident-item incident-{{ incident.statut }}">
+                    <div class="incident-header">
+                        <div>
+                            <div class="incident-id">
+                                <i class="fas fa-bug me-2"></i>Incident #{{ incident.id }}
+                            </div>
+                            <small class="text-muted">
+                                <i class="far fa-clock me-1"></i>
+                                Créé le {{ incident.dt_creation|date:"d/m/Y à H:i" }}
+                            </small>
+                        </div>
+                        <div>
+                            <span class="incident-status status-{{ incident.statut }}">
+                                {% if incident.statut == 'ouvert' %}
+                                    <i class="fas fa-exclamation-circle me-1"></i> Ouvert
+                                {% else %}
+                                    <i class="fas fa-check-circle me-1"></i> Fermé
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="incident-info">
+                        <div class="info-item">
+                            <span class="info-label">Température</span>
+                            <span class="info-value text-danger">
+                                <i class="fas fa-thermometer-half me-1"></i>
+                                {{ incident.dht.temp|floatformat:1 }}°C
+                            </span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <span class="info-label">Humidité</span>
+                            <span class="info-value">
+                                <i class="fas fa-tint me-1"></i>
+                                {{ incident.dht.humidity|floatformat:1 }}%
+                            </span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <span class="info-label">Date mesure</span>
+                            <span class="info-value">
+                                <i class="far fa-calendar me-1"></i>
+                                {{ incident.dht.dt|date:"d/m/Y H:i" }}
+                            </span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <span class="info-label">Gérée par</span>
+                            <span class="info-value">
+                                <i class="fas fa-user me-1"></i>
+                                {% if incident.created_by %}
+                                    {{ incident.created_by.username }}
+                                {% else %}
+                                    Système
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-light">
+                        <i class="fas fa-info-circle me-2 text-primary"></i>
+                        <strong>Cause :</strong>
+                        {% if incident.dht.temp > 8 %}
+                            Température trop élevée (> 8°C)
+                        {% elif incident.dht.temp < 2 %}
+                            Température trop basse (< 2°C)
+                        {% else %}
+                            Anomalie détectée
+                        {% endif %}
+                    </div>
+
+                    {% if incident.commentaire %}
+                    <div class="incident-comment">
+                        <div class="comment-label">
+                            <i class="fas fa-comment"></i>
+                            Commentaire de gestion
+                        </div>
+                        <div class="comment-content">
+                            {{ incident.commentaire }}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if incident.accuse_reception %}
+                    <div class="mt-3">
+                        <small class="text-muted">
+                            <i class="fas fa-check-circle text-success me-1"></i>
+                            Accusé de réception validé
+                        </small>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                
+                <!-- Pagination -->
+                <div class="mt-4 text-center">
+                    <div class="btn-group" role="group">
+                        {% if incidents.has_previous %}
+                        <a href="?page={{ incidents.previous_page_number }}" class="btn btn-outline-primary">
+                            <i class="fas fa-chevron-left me-1"></i> Précédent
+                        </a>
+                        {% endif %}
+                        
+                        <span class="btn btn-light disabled">
+                            Page {{ incidents.number }} sur {{ incidents.paginator.num_pages }}
+                        </span>
+                        
+                        {% if incidents.has_next %}
+                        <a href="?page={{ incidents.next_page_number }}" class="btn btn-outline-primary">
+                            Suivant <i class="fas fa-chevron-right ms-1"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% else %}
+                <!-- État vide -->
+                <div class="empty-state">
+                    <div class="empty-state-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4 class="text-muted mb-3">Aucun incident enregistré</h4>
+                    <p class="text-muted mb-4">
+                        Aucun incident n'a été détecté dans le système.
+                    </p>
+                    <a href="{% url 'admin_dashboard' %}" class="btn btn-primary">
+                        <i class="fas fa-arrow-left me-2"></i>Retour au dashboard
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Pied de page -->
+    <div class="mt-4 text-center text-muted">
+        <small>
+            <i class="far fa-copyright me-1"></i> Historique des incidents ColdChain
+            | Dernière mise à jour: {% now "d/m/Y à H:i" %}
+        </small>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Animation des incidents
+document.addEventListener('DOMContentLoaded', function() {
+    const incidents = document.querySelectorAll('.incident-item');
+    incidents.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+    
+    // Actualisation auto toutes les 60 secondes
+    setTimeout(function() {
+        window.location.reload();
+    }, 60000);
+});
+</script>
+
+</body>
+</html>

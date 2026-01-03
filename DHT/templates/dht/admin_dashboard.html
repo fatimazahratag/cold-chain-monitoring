@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard Administrateur</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+    --primary-color: #4361ee;
+    --success-color: #06d6a0;
+    --danger-color: #ef476f;
+    --warning-color: #ffd166;
+    --info-color: #118ab2;
+    --sidebar-bg: #2d3748;
+    --sidebar-hover: #4a5568;
+    --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+/* ===== SIDEBAR FIXÉ ===== */
+.sidebar {
+    width: 280px;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, var(--sidebar-bg), #1a202c);
+    color: white;
+    box-shadow: 3px 0 15px rgba(0,0,0,.15);
+    z-index: 1000;
+}
+
+.sidebar-brand {
+    padding: 25px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-brand h4 {
+    color: white;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.sidebar-brand small {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.sidebar-menu {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 0;
+}
+
+.sidebar-section {
+    padding: 0 15px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    color: #a0aec0;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    padding-left: 10px;
+    font-weight: 600;
+}
+
+.sidebar-link {
+    color: #e2e8f0;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+.sidebar-link:hover {
+    background: var(--sidebar-hover);
+    color: white;
+    transform: translateX(5px);
+}
+
+.sidebar-link.active {
+    background: linear-gradient(90deg, rgba(67, 97, 238, 0.25) 0%, rgba(67, 97, 238, 0.1) 100%);
+    color: white;
+    font-weight: 600;
+    border-left: 4px solid var(--primary-color);
+}
+
+.sidebar-link i {
+    width: 24px;
+    font-size: 1.1rem;
+    margin-right: 12px;
+}
+
+/* ===== FOOTER FIX ===== */
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,.1);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+    margin-left: 280px;
+    padding: 30px;
+    min-height: 100vh;
+}
+
+.dashboard-header {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+    border-left: 5px solid var(--primary-color);
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    border: none;
+    transition: transform 0.3s ease;
+    height: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background: white;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-radius: 15px 15px 0 0 !important;
+    padding: 1.2rem 1.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.stat-label {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    color: white;
+}
+
+.icon-primary {
+    background: linear-gradient(135deg, #4361ee, #3a56d4);
+}
+
+.icon-danger {
+    background: linear-gradient(135deg, #ef476f, #e63946);
+}
+
+.icon-success {
+    background: linear-gradient(135deg, #06d6a0, #04a777);
+}
+
+.icon-warning {
+    background: linear-gradient(135deg, #ffd166, #ffb347);
+}
+
+.incident-card {
+    border-left: 4px solid var(--danger-color);
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.incident-card:hover {
+    box-shadow: 0 5px 15px rgba(239, 71, 111, 0.1);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.username-badge {
+    background: rgba(67, 97, 238, 0.1);
+    color: var(--primary-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(67, 97, 238, 0.2);
+}
+
+.last-measurement-time {
+    background: linear-gradient(135deg, #4361ee, #3a56d4);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+}
+
+.btn-logout {
+    background: linear-gradient(135deg, #ef476f, #e63946);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: all 0.3s;
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-logout:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(239, 71, 111, 0.3);
+    color: white;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        margin-bottom: 20px;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .sidebar-footer {
+        position: relative;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .stat-value {
+        font-size: 2rem;
+    }
+    
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .dashboard-header {
+        padding: 1rem;
+    }
+    
+    .user-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <h4><i class="fas fa-snowflake me-2"></i> ColdChain Admin</h4>
+        <small>Administration système</small>
+    </div>
+
+    <div class="sidebar-menu">
+        <div class="sidebar-section">
+            <div class="section-title">Dashboard</div>
+            <a href="#" class="sidebar-link active">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Tableau de bord</span>
+            </a>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-title">Surveillance</div>
+            <a href="{% url 'operator_dashboard' %}" class="sidebar-link">
+                <i class="fas fa-eye"></i>
+                <span>Vue opérateur</span>
+            </a>
+            <a href="{% url 'home' %}" class="sidebar-link">
+                <i class="fas fa-globe"></i>
+                <span>Page publique</span>
+            </a>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-title">Logs & Historique</div>
+            <a href="{% url 'system_logs' %}" class="sidebar-link">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Logs système</span>
+            </a>
+            <a href="{% url 'alert_history' %}" class="sidebar-link">
+                <i class="fas fa-history"></i>
+                <span>Historique alertes</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="sidebar-footer">
+        <div class="mb-3 text-center">
+            <small class="text-muted d-block mb-2">
+                Connecté en tant que:<br>
+                <strong>{{ user.username }}</strong> (Admin)
+            </small>
+            <small class="text-muted">
+                <i class="far fa-clock me-1"></i>
+                {% now "d/m/Y H:i" %}
+            </small>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+    <!-- En-tête -->
+    <div class="dashboard-header">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+            <div class="mb-3 mb-md-0">
+                <h3 class="mb-1"><i class="fas fa-shield-alt me-2"></i> Dashboard Administrateur</h3>
+                <p class="text-muted mb-0">Surveillance complète du système</p>
+            </div>
+            <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3">
+                <div class="user-info">
+                    <span class="username-badge">
+                        <i class="fas fa-user-shield me-1"></i>{{ user.username }}
+                    </span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="last-measurement-time">
+                        <i class="far fa-clock me-2"></i>
+                        <div>
+                            <small>Dernière mesure</small>
+                            <div class="fw-bold">{{ last_data.dt|date:"H:i" }}</div>
+                        </div>
+                    </div>
+                    <a href="{% url 'home' %}" class="btn-logout">
+                        <i class="fas fa-sign-out-alt me-2"></i> Déconnexion
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cartes de statistiques -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="icon-circle icon-primary">
+                    <i class="fas fa-thermometer-half"></i>
+                </div>
+                <div class="stat-value {% if last_data.temp < 2 or last_data.temp > 8 %}text-danger{% else %}text-success{% endif %}">
+                    {{ last_data.temp|floatformat:1 }} °C
+                </div>
+                <div class="stat-label">Température actuelle</div>
+                <small class="text-muted">{{ last_data.dt|date:"H:i" }}</small>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="icon-circle icon-primary">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <div class="stat-value" style="color: #4361ee;">
+                    {{ last_data.humidity|floatformat:1 }} %
+                </div>
+                <div class="stat-label">Humidité actuelle</div>
+                <small class="text-muted">{{ last_data.dt|date:"H:i" }}</small>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="icon-circle icon-danger">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="stat-value {% if open_incidents_count > 0 %}text-danger{% else %}text-success{% endif %}">
+                    {{ open_incidents_count }}
+                </div>
+                <div class="stat-label">Incidents ouverts</div>
+                <small class="text-muted">Total: {{ total_incidents }}</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistiques et état du système -->
+    <div class="row g-4 mb-4">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-chart-line me-2"></i> Statistiques du jour
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <div class="display-4 fw-bold text-primary">{{ today_avg_temp|floatformat:1 }} °C</div>
+                        <div class="text-muted mb-3">Moyenne température aujourd'hui</div>
+                        
+                        <div class="d-flex justify-content-center gap-3 mb-3">
+                            <span class="badge bg-info">
+                                <i class="fas fa-ruler me-1"></i> Plage: 2°C - 8°C
+                            </span>
+                            <span class="badge bg-secondary">
+                                <i class="fas fa-database me-1"></i> {{ measures_today }} mesures
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-info-circle me-2"></i> État du système
+                </div>
+                <div class="card-body">
+                    {% if last_data.temp < 2 or last_data.temp > 8 %}
+                        <div class="alert alert-danger mb-4">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-exclamation-triangle fa-2x me-3"></i>
+                                <div>
+                                    <h5 class="alert-heading mb-1">ALERTE TEMPÉRATURE</h5>
+                                    <p class="mb-1">Température actuelle: <strong>{{ last_data.temp|floatformat:1 }}°C</strong></p>
+                                    <small class="mb-0">Plage normale: 2°C - 8°C</small>
+                                </div>
+                            </div>
+                        </div>
+                    {% elif open_incidents_count > 0 %}
+                        <div class="alert alert-warning mb-4">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-exclamation-circle fa-2x me-3"></i>
+                                <div>
+                                    <h5 class="alert-heading mb-1">INCIDENTS EN COURS</h5>
+                                    <p class="mb-0">{{ open_incidents_count }} incident(s) nécessite(nt) attention</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-success mb-4">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle fa-2x me-3"></i>
+                                <div>
+                                    <h5 class="alert-heading mb-1">SYSTÈME FONCTIONNEL</h5>
+                                    <p class="mb-0">Tous les paramètres sont dans les plages normales</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    
+                    <div class="row text-center">
+                        <div class="col-6">
+                            <div class="p-3 bg-light rounded">
+                                <div class="h4 mb-1">{{ total_measures }}</div>
+                                <small class="text-muted">Mesures totales</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 bg-light rounded">
+                                <div class="h4 mb-1">{{ measures_today }}</div>
+                                <small class="text-muted">Mesures aujourd'hui</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Incidents -->
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div>
+                <i class="fas fa-exclamation-triangle me-2"></i> Incidents ouverts
+                {% if open_incidents_count > 0 %}
+                    <span class="badge bg-danger ms-2">{{ open_incidents_count }}</span>
+                {% endif %}
+            </div>
+            <div>
+                <a href="{% url 'system_logs' %}" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-history me-1"></i> Voir les logs
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-body">
+            {% if open_incidents %}
+                {% for incident in open_incidents %}
+                <div class="incident-card">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1">
+                            <h6 class="mb-2">
+                                <i class="fas fa-bug me-2"></i>Incident #{{ incident.id }}
+                            </h6>
+                            <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                                <span class="badge bg-danger">Ouvert</span>
+                                <small class="text-muted">
+                                    <i class="far fa-clock me-1"></i>{{ incident.dt_creation|date:"d/m/Y H:i" }}
+                                </small>
+                                {% if incident.created_by %}
+                                <small class="text-muted">
+                                    <i class="fas fa-user me-1"></i>{{ incident.created_by.username }}
+                                </small>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-thermometer-half text-danger me-2"></i>
+                                        <div>
+                                            <small class="text-muted d-block">Température</small>
+                                            <strong class="text-danger">{{ incident.dht.temp|floatformat:1 }}°C</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-tint text-primary me-2"></i>
+                                        <div>
+                                            <small class="text-muted d-block">Humidité</small>
+                                            <strong>{{ incident.dht.humidity|floatformat:1 }}%</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-light py-2 mb-3">
+                                <i class="fas fa-info-circle me-2"></i>
+                                <strong>Cause:</strong> 
+                                {% if incident.dht.temp > 8 %}
+                                    Température trop élevée (> 8°C)
+                                {% elif incident.dht.temp < 2 %}
+                                    Température trop basse (< 2°C)
+                                {% endif %}
+                            </div>
+                            
+                            {% if incident.commentaire %}
+                            <div class="alert alert-info py-2 mb-3">
+                                <i class="fas fa-comment me-2"></i>
+                                <strong>Commentaire:</strong> {{ incident.commentaire }}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-end gap-2">
+                        <form method="post" action="{% url 'operator_dashboard' %}?filter=today" class="mb-0">
+                            {% csrf_token %}
+                            <input type="hidden" name="accuse_{{ incident.id }}" value="on">
+                            <input type="hidden" name="commentaire_{{ incident.id }}" value="Résolu par l'administrateur">
+                            <button type="submit" name="resolve_incident" value="{{ incident.id }}" 
+                                    class="btn btn-success">
+                                <i class="fas fa-check me-2"></i> Résoudre l'incident
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="text-center py-5">
+                    <div class="mb-4">
+                        <i class="fas fa-check-circle fa-4x text-success"></i>
+                    </div>
+                    <h4 class="text-muted mb-3">Aucun incident ouvert</h4>
+                    <p class="text-muted mb-4">Tous les systèmes fonctionnent normalement</p>
+                    <a href="{% url 'system_logs' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-clipboard-list me-2"></i> Voir les logs système
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Pied de page -->
+    <div class="mt-4 text-center text-muted">
+        <small>
+            <i class="far fa-copyright me-1"></i> Dashboard Administrateur
+            | Système de monitoring ColdChain
+            | Dernière mise à jour: {{ last_data.dt|date:"d/m/Y à H:i" }}
+        </small>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Animation des cartes
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.card, .stat-card');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+    
+    // Actualisation auto toutes les 60 secondes
+    setTimeout(function() {
+        window.location.reload();
+    }, 60000);
+});
+</script>
+
+</body>
+</html>

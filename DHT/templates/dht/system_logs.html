@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Logs Système</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --success-color: #06d6a0;
+            --danger-color: #ef476f;
+            --warning-color: #ffd166;
+            --info-color: #118ab2;
+            --sidebar-bg: #2d3748;
+            --sidebar-hover: #4a5568;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ===== SIDEBAR FIXÉ ===== */
+        .sidebar {
+            width: 280px;
+            min-height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(180deg, var(--sidebar-bg), #1a202c);
+            color: white;
+            box-shadow: 3px 0 15px rgba(0,0,0,.15);
+            z-index: 1000;
+        }
+
+        .sidebar-brand {
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,.15);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar-brand h4 {
+            color: white;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+
+        .sidebar-brand small {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .sidebar-menu {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+
+        .sidebar-section {
+            padding: 0 15px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            color: #a0aec0;
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            padding-left: 10px;
+            font-weight: 600;
+        }
+
+        .sidebar-link {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            border-radius: 8px;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-link:hover {
+            background: var(--sidebar-hover);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .sidebar-link.active {
+            background: linear-gradient(90deg, rgba(67, 97, 238, 0.25) 0%, rgba(67, 97, 238, 0.1) 100%);
+            color: white;
+            font-weight: 600;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .sidebar-link i {
+            width: 24px;
+            font-size: 1.1rem;
+            margin-right: 12px;
+        }
+
+        /* ===== FOOTER FIX ===== */
+        .sidebar-footer {
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,.1);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            margin-left: 280px;
+            padding: 30px;
+            min-height: 100vh;
+        }
+
+        .dashboard-header {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            border: none;
+            transition: transform 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            background: white;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-radius: 15px 15px 0 0 !important;
+            padding: 1.2rem 1.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* ========== STYLES DES LOGS ========== */
+        .log-item {
+            border-left: 4px solid;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .log-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+
+        .log-info { border-left-color: var(--info-color); background-color: rgba(23, 162, 184, 0.05); }
+        .log-warning { border-left-color: var(--warning-color); background-color: rgba(255, 209, 102, 0.05); }
+        .log-error { border-left-color: var(--danger-color); background-color: rgba(239, 71, 111, 0.05); }
+        .log-critical { border-left-color: #000; background-color: rgba(0, 0, 0, 0.05); }
+
+        .badge-level {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-info { background: var(--info-color); color: white; }
+        .badge-warning { background: var(--warning-color); color: #000; }
+        .badge-error { background: var(--danger-color); color: white; }
+        .badge-critical { background: #000; color: white; }
+
+        .badge-category {
+            background: #e9ecef;
+            color: #495057;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+        .btn-csv {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-csv:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(40, 167, 69, 0.3);
+            color: white;
+        }
+
+        .btn-logout {
+            background: linear-gradient(135deg, #ef476f, #e63946);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-logout:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(239, 71, 111, 0.3);
+            color: white;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .username-badge {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(67, 97, 238, 0.2);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            color: #dee2e6;
+            margin-bottom: 20px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 992px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                min-height: auto;
+                margin-bottom: 20px;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .sidebar-footer {
+                position: relative;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header {
+                padding: 1rem;
+            }
+            
+            .user-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <h4><i class="fas fa-snowflake me-2"></i> ColdChain Admin</h4>
+        <small>Administration système</small>
+    </div>
+
+    <div class="sidebar-menu">
+        <div class="sidebar-section">
+            <div class="section-title">Dashboard</div>
+            <a href="{% url 'admin_dashboard' %}" class="sidebar-link">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Tableau de bord</span>
+            </a>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-title">Surveillance</div>
+            <a href="{% url 'operator_dashboard' %}" class="sidebar-link">
+                <i class="fas fa-eye"></i>
+                <span>Vue opérateur</span>
+            </a>
+            <a href="{% url 'home' %}" class="sidebar-link">
+                <i class="fas fa-globe"></i>
+                <span>Page publique</span>
+            </a>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-title">Logs & Historique</div>
+            <a href="{% url 'system_logs' %}" class="sidebar-link active">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Logs système</span>
+            </a>
+            <a href="{% url 'alert_history' %}" class="sidebar-link">
+                <i class="fas fa-history"></i>
+                <span>Historique incidents</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="sidebar-footer">
+        <div class="mb-3 text-center">
+            <small class="text-muted d-block mb-2">
+                Connecté en tant que:<br>
+                <strong>{{ user.username }}</strong>
+            </small>
+            <small class="text-muted">
+                <i class="far fa-clock me-1"></i>
+                {% now "d/m/Y H:i" %}
+            </small>
+        </div>
+    </div>
+</div>
+
+<!-- Contenu principal -->
+<div class="main-content">
+    <!-- En-tête -->
+    <div class="dashboard-header">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+            <div class="mb-3 mb-md-0">
+                <h3 class="mb-1"><i class="fas fa-clipboard-list me-2"></i> Logs Système</h3>
+                <p class="text-muted mb-0">Liste complète des événements système</p>
+            </div>
+            <div class="user-info">
+                <span class="username-badge">
+                    <i class="fas fa-user-shield me-1"></i>{{ user.username }}
+                </span>
+                <a href="{% url 'export_logs_csv' %}" class="btn-csv">
+                    <i class="fas fa-file-csv me-2"></i> Télécharger CSV
+                </a>
+                <a href="{% url 'home' %}" class="btn-logout">
+                    <i class="fas fa-sign-out-alt me-2"></i> Déconnexion
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Informations générales -->
+    <div class="alert alert-info mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <i class="fas fa-info-circle me-2"></i>
+                <strong>{{ logs.paginator.count }}</strong> logs au total
+            </div>
+            <div>
+                <small class="text-muted">
+                    {% if logs %}
+                        Page {{ logs.number }} sur {{ logs.paginator.num_pages }}
+                    {% endif %}
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Liste des logs -->
+    <div class="card">
+        <div class="card-body">
+            {% if logs %}
+                {% for log in logs %}
+                <div class="log-item log-{{ log.level }}">
+                    <div class="d-flex flex-wrap align-items-center mb-2">
+                        <span class="badge-level badge-{{ log.level }}">
+                            <i class="fas 
+                                {% if log.level == 'info' %}fa-info-circle
+                                {% elif log.level == 'warning' %}fa-exclamation-triangle
+                                {% elif log.level == 'error' %}fa-times-circle
+                                {% elif log.level == 'critical' %}fa-skull-crossbones
+                                {% endif %} me-1"></i>
+                            {{ log.get_level_display|upper }}
+                        </span>
+                        
+                        <span class="badge-category">
+                            <i class="fas 
+                                {% if log.category == 'temperature' %}fa-thermometer-half
+                                {% elif log.category == 'humidity' %}fa-tint
+                                {% elif log.category == 'incident' %}fa-bug
+                                {% elif log.category == 'system' %}fa-cogs
+                                {% elif log.category == 'user' %}fa-user
+                                {% else %}fa-microchip{% endif %} me-1"></i>
+                            {{ log.get_category_display }}
+                        </span>
+                        
+                        <small class="text-muted ms-3">
+                            <i class="far fa-clock me-1"></i>
+                            {{ log.created_at|date:"d/m/Y H:i:s" }}
+                        </small>
+                        
+                        {% if log.user %}
+                        <small class="text-muted ms-3">
+                            <i class="fas fa-user me-1"></i>
+                            {{ log.user.username }}
+                        </small>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-2">
+                        {{ log.message }}
+                    </div>
+                    
+                    {% if log.details %}
+                    <small class="text-muted d-block mt-2">
+                        <i class="fas fa-info-circle me-1"></i>
+                        {{ log.details|safe }}
+                    </small>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                
+                <!-- Pagination -->
+                <div class="mt-4 text-center">
+                    <div class="btn-group" role="group">
+                        {% if logs.has_previous %}
+                        <a href="?page={{ logs.previous_page_number }}" class="btn btn-outline-primary">
+                            <i class="fas fa-chevron-left me-1"></i> Précédent
+                        </a>
+                        {% endif %}
+                        
+                        <span class="btn btn-light disabled">
+                            Page {{ logs.number }} sur {{ logs.paginator.num_pages }}
+                        </span>
+                        
+                        {% if logs.has_next %}
+                        <a href="?page={{ logs.next_page_number }}" class="btn btn-outline-primary">
+                            Suivant <i class="fas fa-chevron-right ms-1"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% else %}
+                <!-- État vide -->
+                <div class="empty-state">
+                    <div class="empty-state-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h4 class="text-muted mb-3">Aucun log disponible</h4>
+                    <p class="text-muted mb-4">
+                        Aucun événement n'a été enregistré dans le système.
+                    </p>
+                    <a href="{% url 'admin_dashboard' %}" class="btn btn-primary">
+                        <i class="fas fa-arrow-left me-2"></i>Retour au dashboard
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Pied de page -->
+    <div class="mt-4 text-center text-muted">
+        <small>
+            <i class="far fa-copyright me-1"></i> Système de logs ColdChain
+            | Dernière mise à jour: {% now "d/m/Y à H:i" %}
+        </small>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Animation des logs
+document.addEventListener('DOMContentLoaded', function() {
+    const logs = document.querySelectorAll('.log-item');
+    logs.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+    
+    // Actualisation auto toutes les 30 secondes
+    setTimeout(function() {
+        window.location.reload();
+    }, 30000);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+{% extends 'DHT/base.html' %}
+{% load static %}
+
+{% block title %}Test Email - ColdChain{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">📧 Test des Notifications Email</h4>
+                </div>
+                <div class="card-body">
+                    
+                    <!-- Configuration Email -->
+                    <div class="alert alert-info mb-4">
+                        <h5 class="alert-heading">⚙️ Configuration Email</h5>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Status:</strong> 
+                                    {% if email_config.enabled %}
+                                        <span class="badge bg-success">Activé</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">Désactivé</span>
+                                    {% endif %}
+                                </p>
+                                <p><strong>Serveur SMTP:</strong> {{ email_config.host }}:{{ email_config.port }}</p>
+                                <p><strong>Expéditeur:</strong> {{ email_config.from_email }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Admin:</strong> {{ email_config.admin_email }}</p>
+                                <p><strong>Opérateur:</strong> {{ email_config.operator_email }}</p>
+                                <p><strong>Seuils:</strong> {{ temp_low }}°C - {{ temp_high }}°C</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tests d'envoi -->
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-danger h-100">
+                                <div class="card-header bg-danger text-white">
+                                    <h5 class="mb-0">🔥 Température Haute</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Test d'alerte température trop haute (> {{ temp_high }}°C)</p>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="test_type" value="high_temp">
+                                        <div class="mb-3">
+                                            <label class="form-label">Température (°C):</label>
+                                            <input type="number" step="0.1" name="temperature" 
+                                                   class="form-control" value="9.5" min="{{ temp_high|add:'0.1' }}" max="15">
+                                        </div>
+                                        <button type="submit" class="btn btn-danger w-100">
+                                            Envoyer Test
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-primary h-100">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0">❄️ Température Basse</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Test d'alerte température trop basse (< {{ temp_low }}°C)</p>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="test_type" value="low_temp">
+                                        <div class="mb-3">
+                                            <label class="form-label">Température (°C):</label>
+                                            <input type="number" step="0.1" name="temperature" 
+                                                   class="form-control" value="1.5" min="-5" max="{{ temp_low|add:'-0.1' }}">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            Envoyer Test
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-warning h-100">
+                                <div class="card-header bg-warning text-white">
+                                    <h5 class="mb-0">📋 Incident</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Test de création d'incident</p>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="test_type" value="incident">
+                                        <p class="text-muted small">
+                                            Crée un incident avec la dernière donnée disponible
+                                        </p>
+                                        <button type="submit" class="btn btn-warning w-100">
+                                            Tester Incident
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Derniers envois -->
+                    <div class="mt-4">
+                        <h5>📨 Historique des envois</h5>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Type</th>
+                                        <th>Destinataires</th>
+                                        <th>Statut</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- À implémenter: historique des envois -->
+                                    <tr>
+                                        <td colspan="4" class="text-center text-muted">
+                                            L'historique sera disponible prochainement
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Instructions -->
+                    <div class="alert alert-warning mt-4">
+                        <h5>📌 Instructions</h5>
+                        <ol>
+                            <li>Vérifiez que les emails arrivent dans les boîtes de réception</li>
+                            <li>Vérifiez les spams si vous ne voyez pas les emails</li>
+                            <li>Pour Gmail: Activez l'authentification à 2 facteurs et utilisez un mot de passe d'application</li>
+                            <li>Les seuils sont configurés dans le fichier .env</li>
+                        </ol>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
