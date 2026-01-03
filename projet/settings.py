@@ -16,7 +16,7 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-^3vsgts6k8(xu)zqgyoey
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # IMPORTANT: PythonAnywhere host
-PYTHONANYWHERE_USERNAME = config('PYTHONANYWHERE_USERNAME', default='fatimazohra')
+PYTHONANYWHERE_USERNAME = config('PYTHONANYWHERE_USERNAME', default='fatimazhk')
 ALLOWED_HOSTS = [
     f'{PYTHONANYWHERE_USERNAME}.pythonanywhere.com',
     'localhost',
