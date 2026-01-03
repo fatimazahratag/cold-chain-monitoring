@@ -71,10 +71,11 @@ WSGI_APPLICATION = 'projet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fatimazhk$esp',   # ولا fatimazhk$default
-        'USER': 'fatimazhk',
-        'PASSWORD': 'hakkoukk@2026',
-'HOST': 'fatimazhk.mysql.pythonanywhere-services.com',        'PORT': '3306',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT', default='3306'),
     }
 }
 
