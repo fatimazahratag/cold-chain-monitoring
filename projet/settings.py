@@ -71,13 +71,13 @@ WSGI_APPLICATION = 'projet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('DB_NAME', default=f'{PYTHONANYWHERE_USERNAME}$coldchain'),
-        'USER': config('DB_USER', default=PYTHONANYWHERE_USERNAME),
-        'PASSWORD': config('DB_PASSWORD', default=''),
-        'HOST': config('DB_HOST', default=f'{PYTHONANYWHERE_USERNAME}.mysql.pythonanywhere-services.com'),
-        'PORT': '3306',
+        'NAME': 'fatimazhk$esp',   # ولا fatimazhk$default
+        'USER': 'fatimazhk',
+        'PASSWORD': 'hakkoukk@2026',
+'HOST': 'fatimazhk.mysql.pythonanywhere-services.com',        'PORT': '3306',
     }
 }
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
