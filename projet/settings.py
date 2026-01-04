@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-^3vsgts6k8(xu)zqgyoey@zsj__6i89i^8!kz*3z!==+0l(7%c')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
 
 # IMPORTANT: PythonAnywhere host
 PYTHONANYWHERE_USERNAME = config('PYTHONANYWHERE_USERNAME', default='fatimazhk')
