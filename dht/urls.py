@@ -6,7 +6,7 @@ def redirect_root(request):
     return redirect('home')  # 'home' correspond au name='home' de path('api/home/', ...)
 
 urlpatterns = [
-    path('', redirect_root),
+    
     path('api/home/', views.home, name='home'),  # page home accessible sur /api/home
     path('api/dashboard/', views.dashboard, name='dashboard'),
     path('api/latest/', views.latest_data, name='latest_data'),  # ← ajouté

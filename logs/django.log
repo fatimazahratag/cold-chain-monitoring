@@ -1,1 +1,755 @@
 INFO 2026-01-03 23:18:12,880 autoreload Watching for file changes with StatReloader
+INFO 2026-01-04 22:58:59,804 autoreload Watching for file changes with StatReloader
+INFO 2026-01-04 22:59:43,850 autoreload Watching for file changes with StatReloader
+INFO 2026-01-04 23:00:32,283 autoreload Watching for file changes with StatReloader
+INFO 2026-01-04 23:08:40,649 autoreload C:\Users\Utilisateur\Desktop\GI2026C\projet\settings.py changed, reloading.
+INFO 2026-01-04 23:08:42,417 autoreload Watching for file changes with StatReloader
+INFO 2026-01-04 23:09:08,338 autoreload Watching for file changes with StatReloader
+INFO 2026-01-04 23:11:00,672 autoreload C:\Users\Utilisateur\Desktop\GI2026C\projet\settings.py changed, reloading.
+INFO 2026-01-04 23:11:02,294 autoreload Watching for file changes with StatReloader
+WARNING 2026-01-04 23:11:10,577 base Session data corrupted
+INFO 2026-01-04 23:11:10,603 log "GET /admin/DHT/dht11/ HTTP/1.1" 302 0
+WARNING 2026-01-04 23:11:10,610 base Session data corrupted
+INFO 2026-01-04 23:11:10,781 log "GET /admin/login/?next=/admin/DHT/dht11/ HTTP/1.1" 200 4178
+INFO 2026-01-04 23:11:10,864 basehttp - Broken pipe from ('127.0.0.1', 53794)
+INFO 2026-01-04 23:11:10,865 basehttp - Broken pipe from ('127.0.0.1', 57599)
+INFO 2026-01-04 23:11:10,866 basehttp - Broken pipe from ('127.0.0.1', 59054)
+INFO 2026-01-04 23:11:10,870 basehttp - Broken pipe from ('127.0.0.1', 58030)
+INFO 2026-01-04 23:11:10,870 basehttp - Broken pipe from ('127.0.0.1', 55654)
+INFO 2026-01-04 23:11:10,873 basehttp - Broken pipe from ('127.0.0.1', 55489)
+WARNING 2026-01-04 23:11:18,333 base Session data corrupted
+INFO 2026-01-04 23:11:18,337 log "GET /admin/ HTTP/1.1" 302 0
+WARNING 2026-01-04 23:11:18,350 base Session data corrupted
+INFO 2026-01-04 23:11:18,360 log "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4158
+INFO 2026-01-04 23:11:18,908 log "GET /static/admin/css/base.css HTTP/1.1" 200 23100
+INFO 2026-01-04 23:11:18,934 log "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 3538
+INFO 2026-01-04 23:11:18,940 log "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2026-01-04 23:11:18,941 log "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2026-01-04 23:11:18,941 log "GET /static/admin/css/responsive.css HTTP/1.1" 200 16194
+INFO 2026-01-04 23:11:18,950 log "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:18,962 log "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+WARNING 2026-01-04 23:11:19,035 base Session data corrupted
+INFO 2026-01-04 23:11:19,044 log "HEAD /admin/login/?next=/admin/ HTTP/1.1" 200 0
+WARNING 2026-01-04 23:11:25,222 base Session data corrupted
+INFO 2026-01-04 23:11:26,550 log "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:11:26,627 log "GET /admin/ HTTP/1.1" 200 11088
+INFO 2026-01-04 23:11:26,665 log "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:26,681 log "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:26,681 log "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:26,780 log "HEAD /admin/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:11:36,961 log "GET /admin/DHT/dht11/ HTTP/1.1" 200 45119
+INFO 2026-01-04 23:11:36,995 log "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:37,016 log "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:37,017 log "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:37,016 log "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:37,016 log "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:37,017 log "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:37,027 log "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:37,028 log "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:37,029 log "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:37,047 log "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:37,059 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-04 23:11:37,109 log "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO 2026-01-04 23:11:37,286 log "HEAD /admin/DHT/dht11/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:11:56,452 log "GET /api/home/ HTTP/1.1" 200 12279
+WARNING 2026-01-04 23:11:56,677 base Session data corrupted
+INFO 2026-01-04 23:11:56,680 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:11:56,710 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:11:56,713 log "HEAD /api/home/ HTTP/1.1" 200 0
+WARNING 2026-01-04 23:12:06,694 base Session data corrupted
+INFO 2026-01-04 23:12:06,696 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:12:06,702 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:12:12,316 log "GET /api/home/ HTTP/1.1" 200 12279
+WARNING 2026-01-04 23:12:12,370 base Session data corrupted
+INFO 2026-01-04 23:12:12,375 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:12:12,375 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:12:12,385 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:12:23,171 base Session data corrupted
+INFO 2026-01-04 23:12:23,173 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:12:23,178 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:12:33,179 base Session data corrupted
+INFO 2026-01-04 23:12:33,182 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:12:33,187 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:12:43,167 base Session data corrupted
+INFO 2026-01-04 23:12:43,168 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:12:43,173 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:12:53,176 base Session data corrupted
+INFO 2026-01-04 23:12:53,178 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:12:53,182 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:13:03,168 base Session data corrupted
+INFO 2026-01-04 23:13:03,169 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:13:03,176 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:13:13,176 base Session data corrupted
+INFO 2026-01-04 23:13:13,178 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:13:13,183 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:13:23,179 base Session data corrupted
+INFO 2026-01-04 23:13:23,181 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:13:23,186 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:13:33,179 base Session data corrupted
+INFO 2026-01-04 23:13:33,182 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:13:33,190 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:14:22,584 base Session data corrupted
+INFO 2026-01-04 23:14:22,589 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:14:22,600 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:14:33,165 base Session data corrupted
+INFO 2026-01-04 23:14:33,167 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:14:33,173 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:14:43,173 base Session data corrupted
+INFO 2026-01-04 23:14:43,175 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:14:43,181 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:14:53,175 base Session data corrupted
+INFO 2026-01-04 23:14:53,177 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:14:53,182 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:15:03,165 base Session data corrupted
+INFO 2026-01-04 23:15:03,167 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:15:03,175 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:15:13,173 base Session data corrupted
+INFO 2026-01-04 23:15:13,175 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:15:13,180 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:15:33,178 base Session data corrupted
+INFO 2026-01-04 23:15:33,180 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:15:33,185 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:16:33,180 base Session data corrupted
+INFO 2026-01-04 23:16:33,182 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:16:33,187 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:17:33,185 base Session data corrupted
+INFO 2026-01-04 23:17:33,186 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:17:33,192 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:18:33,181 base Session data corrupted
+INFO 2026-01-04 23:18:33,183 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:18:33,188 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+WARNING 2026-01-04 23:19:33,167 base Session data corrupted
+INFO 2026-01-04 23:19:33,169 log "GET /api/latest/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:19:33,179 log "GET /login/?next=/api/latest/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:19:34,754 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:19:34,832 log "HEAD /login/ HTTP/1.1" 200 0
+WARNING 2026-01-04 23:19:41,387 base Session data corrupted
+INFO 2026-01-04 23:19:41,448 log "POST /login/ HTTP/1.1" 302 0
+WARNING 2026-01-04 23:19:41,521 log Not Found: /dashboard/
+WARNING 2026-01-04 23:19:41,523 log "GET /dashboard/ HTTP/1.1" 404 5989
+WARNING 2026-01-04 23:19:41,607 log Not Found: /dashboard/
+WARNING 2026-01-04 23:19:41,608 log "HEAD /dashboard/ HTTP/1.1" 404 0
+WARNING 2026-01-04 23:19:41,626 log Not Found: /dashboard/
+WARNING 2026-01-04 23:19:41,628 log "GET /dashboard/ HTTP/1.1" 404 5989
+INFO 2026-01-04 23:20:03,705 log "GET /api/dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:20:03,791 log "GET /admin-dashboard/ HTTP/1.1" 200 16348
+INFO 2026-01-04 23:20:03,932 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:20:11,323 log "GET /admin-dashboard/ HTTP/1.1" 200 16348
+INFO 2026-01-04 23:20:11,426 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+WARNING 2026-01-04 23:20:16,253 log Not Found: /dashboard/
+WARNING 2026-01-04 23:20:16,255 log "GET /dashboard/ HTTP/1.1" 404 5989
+INFO 2026-01-04 23:20:17,147 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:20:17,197 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:20:19,904 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:20:22,403 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:20:23,469 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:20:25,658 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-04 23:20:25,741 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:20:25,750 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:20:35,734 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:20:37,354 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:20:37,425 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:20:43,729 log "POST /login/ HTTP/1.1" 302 0
+WARNING 2026-01-04 23:20:43,746 log Not Found: /dashboard/
+WARNING 2026-01-04 23:20:43,749 log "GET /dashboard/ HTTP/1.1" 404 5989
+WARNING 2026-01-04 23:20:43,803 log Not Found: /dashboard/
+WARNING 2026-01-04 23:20:43,804 log "HEAD /dashboard/ HTTP/1.1" 404 0
+WARNING 2026-01-04 23:20:43,821 log Not Found: /dashboard/
+WARNING 2026-01-04 23:20:43,823 log "GET /dashboard/ HTTP/1.1" 404 5989
+INFO 2026-01-04 23:21:17,743 autoreload C:\Users\Utilisateur\Desktop\GI2026C\DHT\urls.py changed, reloading.
+INFO 2026-01-04 23:21:21,352 autoreload Watching for file changes with StatReloader
+INFO 2026-01-04 23:21:27,302 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:21:27,353 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:21:32,346 log "POST /login/ HTTP/1.1" 302 0
+WARNING 2026-01-04 23:21:32,363 log Not Found: /dashboard/
+WARNING 2026-01-04 23:21:32,366 log "GET /dashboard/ HTTP/1.1" 404 5756
+WARNING 2026-01-04 23:21:32,418 log Not Found: /dashboard/
+WARNING 2026-01-04 23:21:32,420 log "HEAD /dashboard/ HTTP/1.1" 404 0
+WARNING 2026-01-04 23:21:32,433 log Not Found: /dashboard/
+WARNING 2026-01-04 23:21:32,435 log "GET /dashboard/ HTTP/1.1" 404 5756
+INFO 2026-01-04 23:21:46,908 log "GET /api/dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:21:47,027 log "GET /api/operator/ HTTP/1.1" 200 22995
+INFO 2026-01-04 23:21:47,183 log "HEAD /api/operator/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:21:57,893 log "GET /api/operator/?filter=month HTTP/1.1" 200 26468
+INFO 2026-01-04 23:21:58,102 log "HEAD /api/operator/?filter=month HTTP/1.1" 200 0
+INFO 2026-01-04 23:22:04,164 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-04 23:22:04,250 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:22:04,263 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:22:06,519 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:22:06,597 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:22:17,814 log "POST /login/ HTTP/1.1" 302 0
+WARNING 2026-01-04 23:22:17,833 log Not Found: /dashboard/
+WARNING 2026-01-04 23:22:17,834 log "GET /dashboard/ HTTP/1.1" 404 5756
+WARNING 2026-01-04 23:22:17,911 log Not Found: /dashboard/
+WARNING 2026-01-04 23:22:17,912 log "HEAD /dashboard/ HTTP/1.1" 404 0
+WARNING 2026-01-04 23:22:17,935 log Not Found: /dashboard/
+WARNING 2026-01-04 23:22:17,937 log "GET /dashboard/ HTTP/1.1" 404 5756
+INFO 2026-01-04 23:22:30,619 log "GET /api/dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:22:30,664 log "GET /api/operator/ HTTP/1.1" 200 22995
+INFO 2026-01-04 23:22:30,787 log "HEAD /api/operator/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:22:43,976 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-04 23:22:44,078 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:22:44,091 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:22:46,183 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:22:54,085 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:23:03,236 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:23:03,312 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:23:11,028 log "POST /login/ HTTP/1.1" 302 0
+WARNING 2026-01-04 23:23:11,050 log Not Found: /dashboard/
+WARNING 2026-01-04 23:23:11,052 log "GET /dashboard/ HTTP/1.1" 404 5756
+WARNING 2026-01-04 23:23:11,103 log Not Found: /dashboard/
+WARNING 2026-01-04 23:23:11,105 log "HEAD /dashboard/ HTTP/1.1" 404 0
+WARNING 2026-01-04 23:23:11,124 log Not Found: /dashboard/
+WARNING 2026-01-04 23:23:11,126 log "GET /dashboard/ HTTP/1.1" 404 5756
+INFO 2026-01-04 23:23:49,791 autoreload Watching for file changes with StatReloader
+INFO 2026-01-04 23:23:52,204 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:23:52,264 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:23:54,201 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:23:55,777 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:23:55,850 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:24:01,968 log "POST /login/ HTTP/1.1" 302 0
+WARNING 2026-01-04 23:24:01,983 log Not Found: /dashboard/
+WARNING 2026-01-04 23:24:01,985 log "GET /dashboard/ HTTP/1.1" 404 5756
+WARNING 2026-01-04 23:24:02,052 log Not Found: /dashboard/
+WARNING 2026-01-04 23:24:02,054 log "HEAD /dashboard/ HTTP/1.1" 404 0
+WARNING 2026-01-04 23:24:02,071 log Not Found: /dashboard/
+WARNING 2026-01-04 23:24:02,072 log "GET /dashboard/ HTTP/1.1" 404 5756
+INFO 2026-01-04 23:29:57,952 autoreload C:\Users\Utilisateur\Desktop\GI2026C\projet\settings.py changed, reloading.
+INFO 2026-01-04 23:29:59,670 autoreload Watching for file changes with StatReloader
+INFO 2026-01-04 23:30:02,344 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:30:02,392 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:30:07,209 log "POST /login/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:30:07,224 log "GET /api/dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:30:07,329 log "GET /admin-dashboard/ HTTP/1.1" 200 16348
+INFO 2026-01-04 23:30:07,453 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:30:22,754 log "GET /api/operator/ HTTP/1.1" 200 22997
+INFO 2026-01-04 23:30:22,918 log "HEAD /api/operator/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:30:32,935 log "GET /system-logs/ HTTP/1.1" 200 28334
+INFO 2026-01-04 23:30:33,043 log "HEAD /system-logs/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:30:39,832 log "GET /alert-history/ HTTP/1.1" 200 82348
+INFO 2026-01-04 23:30:40,040 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:30:47,336 log "GET /system-logs/ HTTP/1.1" 200 28334
+INFO 2026-01-04 23:30:47,434 log "HEAD /system-logs/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:30:52,629 log "GET /alert-history/ HTTP/1.1" 200 82348
+INFO 2026-01-04 23:30:52,800 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:30:56,694 log "GET /system-logs/ HTTP/1.1" 200 28334
+INFO 2026-01-04 23:30:56,827 log "HEAD /system-logs/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:30:59,309 log "GET /admin-dashboard/ HTTP/1.1" 200 16348
+INFO 2026-01-04 23:30:59,426 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:31:01,287 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-04 23:31:01,374 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:31:01,382 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:31:03,642 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:31:10,589 log "GET /admin/DHT/dht11/add/ HTTP/1.1" 200 9798
+INFO 2026-01-04 23:31:10,626 log "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2026-01-04 23:31:10,641 log "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO 2026-01-04 23:31:10,643 log "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2026-01-04 23:31:10,651 log "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO 2026-01-04 23:31:10,729 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-04 23:31:10,841 log "HEAD /admin/DHT/dht11/add/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:31:12,194 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:31:19,121 log "POST /admin/DHT/dht11/add/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:31:19,484 log "GET /admin/DHT/dht11/ HTTP/1.1" 200 45368
+INFO 2026-01-04 23:31:19,533 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-04 23:31:19,563 log "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2026-01-04 23:31:19,699 log "HEAD /admin/DHT/dht11/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:31:21,363 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:31:24,584 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-04 23:31:24,667 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:31:24,679 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:31:28,298 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:31:28,381 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:31:35,813 log "POST /login/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:31:35,827 log "GET /api/dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:31:35,875 log "GET /admin-dashboard/ HTTP/1.1" 200 16440
+INFO 2026-01-04 23:31:35,997 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:31:40,320 signals Nouvel incident créé #198, envoi d'email...
+INFO 2026-01-04 23:31:44,367 email_notifications Email alert sent to ['fatimazohra.hakkou@gmail.com', 'tagmoutifatimazahra08@gmail.com'] - Temp: 0.0°C
+INFO 2026-01-04 23:31:48,109 email_notifications Incident creation email sent for incident #198
+INFO 2026-01-04 23:31:48,110 signals Emails envoyés pour l'incident #198
+INFO 2026-01-04 23:31:48,142 email_notifications Thread email démarré pour température: 0.0°C
+INFO 2026-01-04 23:31:48,144 email_notifications Thread email démarré pour incident #198
+INFO 2026-01-04 23:31:48,181 log "GET /api/operator/ HTTP/1.1" 200 26767
+INFO 2026-01-04 23:31:48,487 log "HEAD /api/operator/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:31:51,029 email_notifications Email alert sent to ['fatimazohra.hakkou@gmail.com', 'tagmoutifatimazahra08@gmail.com'] - Temp: 0.0°C
+INFO 2026-01-04 23:31:51,936 email_notifications Incident creation email sent for incident #198
+INFO 2026-01-04 23:32:12,692 log "GET /api/operator/?filter=month HTTP/1.1" 200 30215
+INFO 2026-01-04 23:32:12,917 log "HEAD /api/operator/?filter=month HTTP/1.1" 200 0
+INFO 2026-01-04 23:32:32,130 log "GET /admin-dashboard/ HTTP/1.1" 200 19913
+INFO 2026-01-04 23:32:32,230 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:32:42,543 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-04 23:32:42,649 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:32:42,658 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:32:44,596 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:32:44,682 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:32:53,451 log "POST /login/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:32:53,464 log "GET /api/dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:32:53,513 log "GET /api/operator/ HTTP/1.1" 200 26765
+INFO 2026-01-04 23:32:53,706 log "HEAD /api/operator/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:33:11,271 email_notifications Incident resolution email sent for incident #198
+INFO 2026-01-04 23:33:11,304 log "POST /api/operator/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:33:11,345 log "GET /api/operator/?filter=today HTTP/1.1" 200 23048
+INFO 2026-01-04 23:33:11,532 log "HEAD /api/operator/?filter=today HTTP/1.1" 200 0
+INFO 2026-01-04 23:33:18,254 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-04 23:33:18,310 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-04 23:33:18,318 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:33:19,762 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-04 23:33:19,838 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:33:26,751 log "POST /login/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:33:26,766 log "GET /api/dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:33:26,890 log "GET /admin-dashboard/ HTTP/1.1" 200 16440
+INFO 2026-01-04 23:33:27,007 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:33:39,548 log "GET /admin/DHT/dht11/add/ HTTP/1.1" 200 9798
+INFO 2026-01-04 23:33:39,594 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-04 23:33:39,660 log "HEAD /admin/DHT/dht11/add/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:33:46,478 log "POST /admin/DHT/dht11/add/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:33:46,566 log "GET /admin/DHT/dht11/ HTTP/1.1" 200 45368
+INFO 2026-01-04 23:33:46,616 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-04 23:33:46,799 log "HEAD /admin/DHT/dht11/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:33:50,501 log "GET /admin-dashboard/ HTTP/1.1" 200 16348
+INFO 2026-01-04 23:33:50,615 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:33:57,474 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:33:57,625 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:34:05,331 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:34:05,467 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:34:06,643 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:34:06,782 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:34:09,608 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:34:09,739 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:34:10,781 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:34:10,903 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:34:12,515 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:34:12,651 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:34:13,623 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:34:13,763 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:34:14,832 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:34:14,967 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:34:16,336 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:34:16,471 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:34:18,214 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:34:18,353 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:34:19,462 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:34:19,603 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:34:21,162 log "GET /admin-dashboard/ HTTP/1.1" 200 16348
+INFO 2026-01-04 23:34:21,296 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:34:22,976 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:34:23,152 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:34:44,244 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:34:44,371 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:35:15,817 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:35:16,017 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:36:15,956 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:36:16,142 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:37:16,105 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:37:16,305 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:38:16,263 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:38:16,468 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:39:16,411 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:39:16,599 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:40:16,596 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:40:16,784 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:41:16,736 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:41:16,881 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:42:17,224 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:42:17,340 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:43:18,225 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:43:18,340 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:44:19,239 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:44:19,339 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:45:20,217 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:45:20,345 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:46:21,223 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:46:21,329 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:47:22,227 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:47:22,333 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:48:23,226 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:48:23,338 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:49:24,232 log "GET /alert-history/ HTTP/1.1" 200 82755
+INFO 2026-01-04 23:49:24,342 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:49:29,456 log "GET /admin-dashboard/ HTTP/1.1" 200 16445
+INFO 2026-01-04 23:49:29,528 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:49:33,258 signals Nouvel incident créé #199, envoi d'email...
+INFO 2026-01-04 23:49:35,412 email_notifications Email alert sent to ['fatimazohra.hakkou@gmail.com', 'tagmoutifatimazahra08@gmail.com'] - Temp: 19.3°C
+INFO 2026-01-04 23:49:38,171 email_notifications Incident creation email sent for incident #199
+INFO 2026-01-04 23:49:38,172 signals Emails envoyés pour l'incident #199
+INFO 2026-01-04 23:49:38,198 email_notifications Thread email démarré pour température: 19.3°C
+INFO 2026-01-04 23:49:38,199 email_notifications Thread email démarré pour incident #199
+INFO 2026-01-04 23:49:38,231 log "GET /api/operator/ HTTP/1.1" 200 27156
+INFO 2026-01-04 23:49:38,360 signals Nouvel incident créé #200, envoi d'email...
+INFO 2026-01-04 23:49:41,152 email_notifications Incident creation email sent for incident #199
+INFO 2026-01-04 23:49:41,592 email_notifications Email alert sent to ['fatimazohra.hakkou@gmail.com', 'tagmoutifatimazahra08@gmail.com'] - Temp: 19.3°C
+INFO 2026-01-04 23:49:42,161 email_notifications Email alert sent to ['fatimazohra.hakkou@gmail.com', 'tagmoutifatimazahra08@gmail.com'] - Temp: 19.3°C
+INFO 2026-01-04 23:49:44,352 email_notifications Incident creation email sent for incident #200
+INFO 2026-01-04 23:49:44,352 signals Emails envoyés pour l'incident #200
+INFO 2026-01-04 23:49:44,379 email_notifications Thread email démarré pour température: 19.3°C
+INFO 2026-01-04 23:49:44,380 email_notifications Thread email démarré pour incident #200
+INFO 2026-01-04 23:49:44,420 log "HEAD /api/operator/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:49:46,471 email_notifications Email alert sent to ['fatimazohra.hakkou@gmail.com', 'tagmoutifatimazahra08@gmail.com'] - Temp: 19.3°C
+INFO 2026-01-04 23:49:46,711 email_notifications Incident creation email sent for incident #200
+INFO 2026-01-04 23:49:53,812 signals Nouvel incident créé #201, envoi d'email...
+INFO 2026-01-04 23:49:55,952 email_notifications Email alert sent to ['fatimazohra.hakkou@gmail.com', 'tagmoutifatimazahra08@gmail.com'] - Temp: 19.1°C
+INFO 2026-01-04 23:49:58,722 email_notifications Incident creation email sent for incident #201
+INFO 2026-01-04 23:49:58,722 signals Emails envoyés pour l'incident #201
+INFO 2026-01-04 23:49:58,740 email_notifications Thread email démarré pour température: 19.1°C
+INFO 2026-01-04 23:49:58,741 email_notifications Thread email démarré pour incident #201
+INFO 2026-01-04 23:49:58,763 log "GET /api/operator/ HTTP/1.1" 200 27284
+INFO 2026-01-04 23:49:58,872 signals Nouvel incident créé #202, envoi d'email...
+INFO 2026-01-04 23:50:00,761 email_notifications Incident creation email sent for incident #201
+INFO 2026-01-04 23:50:01,061 email_notifications Email alert sent to ['fatimazohra.hakkou@gmail.com', 'tagmoutifatimazahra08@gmail.com'] - Temp: 19.1°C
+INFO 2026-01-04 23:50:01,453 email_notifications Email alert sent to ['fatimazohra.hakkou@gmail.com', 'tagmoutifatimazahra08@gmail.com'] - Temp: 19.1°C
+INFO 2026-01-04 23:50:04,852 email_notifications Incident creation email sent for incident #202
+INFO 2026-01-04 23:50:04,853 signals Emails envoyés pour l'incident #202
+INFO 2026-01-04 23:50:04,876 email_notifications Thread email démarré pour température: 19.1°C
+INFO 2026-01-04 23:50:04,877 email_notifications Thread email démarré pour incident #202
+INFO 2026-01-04 23:50:04,919 log "HEAD /api/operator/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:50:08,442 email_notifications Incident creation email sent for incident #202
+INFO 2026-01-04 23:50:08,731 email_notifications Email alert sent to ['fatimazohra.hakkou@gmail.com', 'tagmoutifatimazahra08@gmail.com'] - Temp: 19.1°C
+INFO 2026-01-04 23:50:12,336 signals Nouvel incident créé #203, envoi d'email...
+INFO 2026-01-04 23:50:15,102 email_notifications Email alert sent to ['fatimazohra.hakkou@gmail.com', 'tagmoutifatimazahra08@gmail.com'] - Temp: 19.0°C
+INFO 2026-01-04 23:50:17,052 email_notifications Incident creation email sent for incident #203
+INFO 2026-01-04 23:50:17,052 signals Emails envoyés pour l'incident #203
+INFO 2026-01-04 23:50:17,077 email_notifications Thread email démarré pour température: 19.0°C
+INFO 2026-01-04 23:50:17,079 email_notifications Thread email démarré pour incident #203
+INFO 2026-01-04 23:50:19,232 email_notifications Incident creation email sent for incident #203
+INFO 2026-01-04 23:50:19,411 email_notifications Incident resolution email sent for incident #201
+INFO 2026-01-04 23:50:19,435 log "POST /api/operator/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:50:19,479 log "GET /api/operator/?filter=today HTTP/1.1" 200 27316
+INFO 2026-01-04 23:50:19,595 log "HEAD /api/operator/?filter=today HTTP/1.1" 200 0
+INFO 2026-01-04 23:50:19,932 email_notifications Email alert sent to ['fatimazohra.hakkou@gmail.com', 'tagmoutifatimazahra08@gmail.com'] - Temp: 19.0°C
+INFO 2026-01-04 23:50:20,686 log "GET /admin/DHT/dht11/add/ HTTP/1.1" 200 9798
+INFO 2026-01-04 23:50:20,713 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-04 23:50:20,759 log "HEAD /admin/DHT/dht11/add/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:50:26,036 log "POST /admin/DHT/dht11/add/ HTTP/1.1" 302 0
+INFO 2026-01-04 23:50:26,114 log "GET /admin/DHT/dht11/ HTTP/1.1" 200 45396
+INFO 2026-01-04 23:50:26,151 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-04 23:50:26,333 log "HEAD /admin/DHT/dht11/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:50:30,049 log "GET /api/operator/?filter=today HTTP/1.1" 200 27318
+INFO 2026-01-04 23:50:30,163 log "HEAD /api/operator/?filter=today HTTP/1.1" 200 0
+INFO 2026-01-04 23:50:47,602 email_notifications Incident resolution email sent for incident #203
+INFO 2026-01-04 23:50:47,630 log "POST /api/operator/?filter=today HTTP/1.1" 302 0
+INFO 2026-01-04 23:50:47,673 log "GET /api/operator/?filter=today HTTP/1.1" 200 27318
+INFO 2026-01-04 23:50:47,805 log "HEAD /api/operator/?filter=today HTTP/1.1" 200 0
+INFO 2026-01-04 23:50:54,542 email_notifications Incident resolution email sent for incident #202
+INFO 2026-01-04 23:50:54,567 log "POST /api/operator/?filter=today HTTP/1.1" 302 0
+INFO 2026-01-04 23:50:54,611 log "GET /api/operator/?filter=today HTTP/1.1" 200 27318
+INFO 2026-01-04 23:50:54,758 log "HEAD /api/operator/?filter=today HTTP/1.1" 200 0
+INFO 2026-01-04 23:51:00,332 email_notifications Incident resolution email sent for incident #200
+INFO 2026-01-04 23:51:00,358 log "POST /api/operator/?filter=today HTTP/1.1" 302 0
+INFO 2026-01-04 23:51:00,433 log "GET /api/operator/?filter=today HTTP/1.1" 200 27318
+INFO 2026-01-04 23:51:00,580 log "HEAD /api/operator/?filter=today HTTP/1.1" 200 0
+INFO 2026-01-04 23:51:17,093 email_notifications Incident resolution email sent for incident #199
+INFO 2026-01-04 23:51:17,120 log "POST /api/operator/?filter=today HTTP/1.1" 302 0
+INFO 2026-01-04 23:51:17,152 log "GET /api/operator/?filter=today HTTP/1.1" 200 23596
+INFO 2026-01-04 23:51:17,271 log "HEAD /api/operator/?filter=today HTTP/1.1" 200 0
+INFO 2026-01-04 23:51:21,726 log "GET /api/operator/?filter=today HTTP/1.1" 200 23596
+INFO 2026-01-04 23:51:30,530 log "GET /admin-dashboard/ HTTP/1.1" 200 16351
+INFO 2026-01-04 23:51:30,594 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:51:33,281 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-04 23:51:33,395 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:52:34,217 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-04 23:52:34,327 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:53:35,214 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-04 23:53:35,327 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:54:36,225 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-04 23:54:36,348 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:55:37,216 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-04 23:55:37,343 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:56:38,220 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-04 23:56:38,346 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:57:39,240 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-04 23:57:39,396 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:58:40,248 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-04 23:58:40,377 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-04 23:59:41,237 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-04 23:59:41,378 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:00:42,251 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:00:42,392 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:01:43,248 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:01:43,386 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:02:44,241 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:02:44,371 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:03:45,523 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:03:45,649 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:04:45,614 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:04:45,754 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:05:45,752 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:05:45,890 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:06:45,868 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:06:46,011 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:07:45,992 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:07:46,118 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:08:46,093 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:08:46,226 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:09:46,215 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:09:46,367 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:10:46,340 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:10:46,465 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:11:46,467 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:11:46,624 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:12:46,615 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:12:46,776 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:13:46,746 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:13:46,896 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:14:46,875 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:14:46,999 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:15:46,987 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:15:47,111 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:16:47,083 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:16:47,211 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:17:47,167 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:17:47,293 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:18:47,270 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:18:47,385 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:19:47,376 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:19:47,506 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:20:47,496 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:20:47,648 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:21:47,626 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:21:47,775 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:22:47,753 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:22:47,905 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:23:47,887 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:23:48,049 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 00:24:48,028 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 00:24:48,194 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 01:29:20,218 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 01:29:20,411 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 03:19:11,003 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 03:19:11,283 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:01:22,368 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 08:01:22,466 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:02:23,549 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 08:02:23,687 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:12:07,560 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 08:12:07,723 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:46:14,602 log "GET /alert-history/ HTTP/1.1" 200 83524
+INFO 2026-01-05 08:46:14,736 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:46:18,374 log "GET /admin-dashboard/ HTTP/1.1" 200 16443
+INFO 2026-01-05 08:46:18,518 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:47:18,463 log "GET /admin-dashboard/ HTTP/1.1" 200 16443
+INFO 2026-01-05 08:47:18,559 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:48:18,433 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-05 08:48:18,579 log "GET /api/latest/ HTTP/1.1" 200 74
+INFO 2026-01-05 08:48:18,592 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:48:28,562 log "GET /api/latest/ HTTP/1.1" 200 74
+INFO 2026-01-05 08:48:28,936 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-05 08:48:28,988 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:48:29,002 log "GET /api/latest/ HTTP/1.1" 200 74
+INFO 2026-01-05 08:48:33,703 log "GET /admin/DHT/dht11/add/ HTTP/1.1" 200 9798
+INFO 2026-01-05 08:48:33,753 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-05 08:48:33,831 log "HEAD /admin/DHT/dht11/add/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:48:39,192 log "GET /api/latest/ HTTP/1.1" 200 74
+INFO 2026-01-05 08:48:41,144 log "POST /admin/DHT/dht11/add/ HTTP/1.1" 302 0
+INFO 2026-01-05 08:48:41,232 log "GET /admin/DHT/dht11/ HTTP/1.1" 200 45398
+INFO 2026-01-05 08:48:41,287 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-05 08:48:41,464 log "HEAD /admin/DHT/dht11/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:48:43,767 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-05 08:48:43,827 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:48:43,835 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:48:48,160 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-05 08:48:48,239 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:48:56,431 log "POST /login/ HTTP/1.1" 302 0
+INFO 2026-01-05 08:48:56,444 log "GET /api/dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-05 08:48:56,492 log "GET /admin-dashboard/ HTTP/1.1" 200 16349
+INFO 2026-01-05 08:48:56,602 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:49:57,223 log "GET /admin-dashboard/ HTTP/1.1" 200 16349
+INFO 2026-01-05 08:49:57,332 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:50:58,223 log "GET /admin-dashboard/ HTTP/1.1" 200 16349
+INFO 2026-01-05 08:50:58,328 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:51:54,348 log "GET /api/operator/ HTTP/1.1" 200 23706
+INFO 2026-01-05 08:51:54,541 log "HEAD /api/operator/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:52:06,817 log "GET /api/operator/ HTTP/1.1" 200 23706
+INFO 2026-01-05 08:52:07,003 log "HEAD /api/operator/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:52:09,411 log "GET /api/operator/?filter=month HTTP/1.1" 200 26910
+INFO 2026-01-05 08:52:09,608 log "HEAD /api/operator/?filter=month HTTP/1.1" 200 0
+INFO 2026-01-05 08:52:23,182 log "GET /api/operator/?filter=last_month HTTP/1.1" 200 26216
+INFO 2026-01-05 08:52:23,423 log "HEAD /api/operator/?filter=last_month HTTP/1.1" 200 0
+INFO 2026-01-05 08:52:28,093 log "GET /api/operator/?filter=all HTTP/1.1" 200 26562
+INFO 2026-01-05 08:52:28,292 log "HEAD /api/operator/?filter=all HTTP/1.1" 200 0
+INFO 2026-01-05 08:52:34,752 log "GET /api/operator/?filter=today HTTP/1.1" 200 23706
+INFO 2026-01-05 08:52:34,958 log "HEAD /api/operator/?filter=today HTTP/1.1" 200 0
+INFO 2026-01-05 08:52:39,771 log "GET /api/operator/?filter=month HTTP/1.1" 200 26910
+INFO 2026-01-05 08:52:39,985 log "HEAD /api/operator/?filter=month HTTP/1.1" 200 0
+INFO 2026-01-05 08:54:47,351 log "GET /admin-dashboard/ HTTP/1.1" 200 16350
+INFO 2026-01-05 08:54:47,476 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:54:49,566 log "GET /system-logs/ HTTP/1.1" 200 21146
+INFO 2026-01-05 08:54:49,683 log "HEAD /system-logs/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:55:06,396 log "GET /system-logs/ HTTP/1.1" 200 21146
+INFO 2026-01-05 08:55:06,475 log "HEAD /system-logs/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:55:08,571 log "GET /export-logs-csv/ HTTP/1.1" 200 25243
+INFO 2026-01-05 08:55:12,579 log "GET /system-logs/ HTTP/1.1" 200 22565
+INFO 2026-01-05 08:55:12,660 log "HEAD /system-logs/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:55:15,526 log "GET /admin-dashboard/ HTTP/1.1" 200 16350
+INFO 2026-01-05 08:55:15,648 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:55:23,884 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-05 08:55:23,973 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:55:23,981 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:55:26,851 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:55:34,194 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:55:44,190 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:55:47,167 log "GET /admin/DHT/dht11/ HTTP/1.1" 200 45145
+INFO 2026-01-05 08:55:47,203 log "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,206 log "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,214 log "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,220 log "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,221 log "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,221 log "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,223 log "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,228 log "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,231 log "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,231 log "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,235 log "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,235 log "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,235 log "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,240 log "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,246 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-05 08:55:47,247 log "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,254 log "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2026-01-05 08:55:47,393 log "HEAD /admin/DHT/dht11/ HTTP/1.1" 200 0
+INFO 2026-01-05 08:55:53,949 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:56:03,962 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:56:14,199 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:56:24,191 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:56:34,197 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:56:44,200 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:56:54,187 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:57:04,196 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:57:33,209 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:58:33,200 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 08:59:33,199 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:00:33,194 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:01:33,191 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:02:33,196 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:03:31,300 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:04:31,307 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:05:31,313 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:06:31,308 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:07:31,302 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:08:31,298 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:09:31,313 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:10:31,312 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:11:31,303 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:12:31,294 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:13:31,300 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:14:31,293 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:15:31,301 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:16:31,633 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:17:31,299 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:18:02,877 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:18:12,057 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:18:22,064 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:18:32,070 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:18:42,296 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:18:52,307 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:19:02,292 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:19:12,291 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:19:22,289 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:19:32,299 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:19:42,300 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:19:52,265 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:20:02,064 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:20:12,067 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:20:22,060 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:20:32,050 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:20:42,049 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:20:52,059 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:21:02,064 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:21:12,050 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:21:22,065 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:21:32,061 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:21:42,062 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:21:50,211 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:21:51,603 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-05 09:21:51,685 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:21:58,435 log "POST /login/ HTTP/1.1" 302 0
+INFO 2026-01-05 09:21:58,447 log "GET /api/dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-05 09:21:58,493 log "GET /admin-dashboard/ HTTP/1.1" 200 16350
+INFO 2026-01-05 09:21:58,610 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:22:08,223 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-05 09:22:08,326 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:22:08,337 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:22:09,960 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-05 09:22:10,022 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:22:10,029 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:22:10,707 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-05 09:22:10,769 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:22:10,774 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:22:20,784 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:22:30,769 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:22:40,779 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:22:50,776 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:22:56,586 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-05 09:22:56,660 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:23:06,527 log "POST /login/ HTTP/1.1" 302 0
+INFO 2026-01-05 09:23:06,540 log "GET /api/dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-05 09:23:06,580 log "GET /api/operator/ HTTP/1.1" 200 23704
+INFO 2026-01-05 09:23:06,753 log "HEAD /api/operator/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:23:13,494 log "GET /api/operator/?filter=month HTTP/1.1" 200 26908
+INFO 2026-01-05 09:23:13,689 log "HEAD /api/operator/?filter=month HTTP/1.1" 200 0
+INFO 2026-01-05 09:23:19,255 log "GET /api/operator/?filter=last_month HTTP/1.1" 200 26214
+INFO 2026-01-05 09:23:19,484 log "HEAD /api/operator/?filter=last_month HTTP/1.1" 200 0
+INFO 2026-01-05 09:23:23,456 log "GET /api/operator/?filter=last_month&export=csv HTTP/1.1" 200 10318
+INFO 2026-01-05 09:23:36,648 log "GET /admin/DHT/dht11/add/ HTTP/1.1" 200 9798
+INFO 2026-01-05 09:23:36,687 log "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2026-01-05 09:23:36,690 log "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO 2026-01-05 09:23:36,696 log "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2026-01-05 09:23:36,696 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-05 09:23:36,702 log "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO 2026-01-05 09:23:36,761 log "HEAD /admin/DHT/dht11/add/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:23:45,325 log "POST /admin/DHT/dht11/add/ HTTP/1.1" 302 0
+INFO 2026-01-05 09:23:45,436 log "GET /admin/DHT/dht11/ HTTP/1.1" 200 45394
+INFO 2026-01-05 09:23:45,483 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-05 09:23:45,508 log "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2026-01-05 09:23:45,662 log "HEAD /admin/DHT/dht11/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:23:47,992 signals Nouvel incident créé #204, envoi d'email...
+INFO 2026-01-05 09:23:51,119 email_notifications Email alert sent to ['fatimazohra.hakkou@gmail.com', 'tagmoutifatimazahra08@gmail.com'] - Temp: 1.0°C
+INFO 2026-01-05 09:23:54,170 email_notifications Incident creation email sent for incident #204
+INFO 2026-01-05 09:23:54,170 signals Emails envoyés pour l'incident #204
+INFO 2026-01-05 09:23:54,199 email_notifications Thread email démarré pour température: 1.0°C
+INFO 2026-01-05 09:23:54,201 email_notifications Thread email démarré pour incident #204
+INFO 2026-01-05 09:23:54,244 log "GET /api/operator/?filter=last_month HTTP/1.1" 200 29958
+INFO 2026-01-05 09:23:54,589 log "HEAD /api/operator/?filter=last_month HTTP/1.1" 200 0
+INFO 2026-01-05 09:23:56,515 email_notifications Email alert sent to ['fatimazohra.hakkou@gmail.com', 'tagmoutifatimazahra08@gmail.com'] - Temp: 1.0°C
+INFO 2026-01-05 09:23:56,618 email_notifications Incident creation email sent for incident #204
+INFO 2026-01-05 09:24:17,754 log "GET /admin/DHT/dht11/add/ HTTP/1.1" 200 9798
+INFO 2026-01-05 09:24:17,792 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-05 09:24:17,852 log "HEAD /admin/DHT/dht11/add/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:24:22,231 log "POST /admin/DHT/dht11/add/ HTTP/1.1" 302 0
+INFO 2026-01-05 09:24:22,325 log "GET /admin/DHT/dht11/ HTTP/1.1" 200 45394
+INFO 2026-01-05 09:24:22,377 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-05 09:24:22,540 log "HEAD /admin/DHT/dht11/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:24:38,698 email_notifications Incident resolution email sent for incident #204
+INFO 2026-01-05 09:24:38,727 log "POST /api/operator/?filter=last_month HTTP/1.1" 302 0
+INFO 2026-01-05 09:24:38,788 log "GET /api/operator/?filter=last_month HTTP/1.1" 200 26214
+INFO 2026-01-05 09:24:38,984 log "HEAD /api/operator/?filter=last_month HTTP/1.1" 200 0
+INFO 2026-01-05 09:24:45,978 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-05 09:24:46,050 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:24:46,063 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:24:47,482 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-05 09:24:47,549 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:24:55,063 log "POST /login/ HTTP/1.1" 302 0
+INFO 2026-01-05 09:24:55,076 log "GET /api/dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-05 09:24:55,130 log "GET /admin-dashboard/ HTTP/1.1" 200 16350
+INFO 2026-01-05 09:24:55,242 log "HEAD /admin-dashboard/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:25:07,983 log "GET /system-logs/ HTTP/1.1" 200 86596
+INFO 2026-01-05 09:25:08,114 log "HEAD /system-logs/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:25:14,176 log "GET /alert-history/ HTTP/1.1" 200 83519
+INFO 2026-01-05 09:25:14,321 log "HEAD /alert-history/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:25:25,297 log "GET /export-incidents-csv/ HTTP/1.1" 200 13782
+INFO 2026-01-05 09:25:27,082 log "GET /system-logs/ HTTP/1.1" 200 86572
+INFO 2026-01-05 09:25:27,212 log "HEAD /system-logs/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:25:29,333 log "GET /export-logs-csv/ HTTP/1.1" 200 34365
+INFO 2026-01-05 09:25:31,535 log "GET /api/operator/ HTTP/1.1" 200 23768
+INFO 2026-01-05 09:25:31,684 log "HEAD /api/operator/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:25:44,867 log "GET /api/home/ HTTP/1.1" 200 12279
+INFO 2026-01-05 09:25:44,949 log "GET /api/latest/ HTTP/1.1" 200 73
+INFO 2026-01-05 09:25:44,952 log "HEAD /api/home/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:25:46,498 log "GET /login/ HTTP/1.1" 200 4557
+INFO 2026-01-05 09:25:46,576 log "HEAD /login/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:25:56,941 log "POST /login/ HTTP/1.1" 302 0
+INFO 2026-01-05 09:25:56,953 log "GET /api/dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-05 09:25:57,023 log "GET /api/operator/ HTTP/1.1" 200 23766
+INFO 2026-01-05 09:25:57,207 log "HEAD /api/operator/ HTTP/1.1" 200 0
+INFO 2026-01-05 09:36:24,730 log "GET /admin/DHT/dht11/add/ HTTP/1.1" 200 9798
+INFO 2026-01-05 09:36:24,782 log "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-01-05 09:36:24,863 log "HEAD /admin/DHT/dht11/add/ HTTP/1.1" 200 0
